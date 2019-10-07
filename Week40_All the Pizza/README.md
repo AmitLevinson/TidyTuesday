@@ -1,8 +1,3 @@
----
-output: html_document
----
-
-
 ![](Barstool_rating.png)
 
 ## All The Pizza
