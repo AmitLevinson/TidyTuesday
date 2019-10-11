@@ -3,7 +3,7 @@
 **What is TidyTuesday?**
 
 
-TidyTuesday is *"A weekly data project aimed at the R ecosystem. [...] [A]n emphasis was placed on understanding how to summarize and arrange data to make meaningful charts with ggplot2, tidyr, dplyr, and other tools in the tidyverse ecosystem."* according to the project's page on [GitHub](https://github.com/rfordatascience/tidytuesday). 
+TidyTuesday is *"A weekly data project aimed at the R ecosystem. [...] an emphasis was placed on understanding how to summarize and arrange data to make meaningful charts with ggplot2, tidyr, dplyr, and other tools in the tidyverse ecosystem."* according to the project's page on [GitHub](https://github.com/rfordatascience/tidytuesday). 
 
 Basically, every week they publish a new data set where the R community is welcome to analyze and visualize data (Actually, in general, I think any programming language is welcome according to their guidelines). 
 I started learning R and saw it as a great opportunity to practice plotting and analzying datasets. If you're looking to get some practice or enjoy analyzing the same data sets as others - Join the party, there's much to learn!
