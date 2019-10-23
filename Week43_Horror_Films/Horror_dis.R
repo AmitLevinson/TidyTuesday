@@ -34,10 +34,10 @@ top_3 <-
   
 s <- ggplot(rating_length, aes(y = review_rating, x = length_cat))+
   #Creating a beeswarm plot
-  geom_quasirandom(alpha = 0.3, width = 0.3)+
+  geom_quasirandom(alpha = 0.7, width = 0.3)+
   labs(x= "Length (in hours)",y= "Rating", title = "Prefer the shorter or longer horror movies?", 
-       subtitle = "Only a slight advantage in ratings exists for the longer horror movies; Points represent mean rating \nvalue for each category. Titles and duration for Top 3 rated movies in each category are displayed",
-       caption = "Data: Georgios Karamanis | @Amit_Levinson")+
+       subtitle = "Only a slight advantage in ratings exists for the longer horror movies; Points represent mean rating \nvalue for each category. Titles and duration for top 3 rated movies in each category are displayed",
+       caption = "Data: imdb.com | @Amit_Levinson")+
   #Adding a point representing the Mean value
   stat_summary(fun.y = "mean", geom = "point", size = 3, color = "black") +
   #Adding a line to show the difference in mean 
