@@ -10,6 +10,11 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 
 Below are graphs I made, organized in a descending order:
 
+### **22.10.2019**  
+
+
+<img src="Week43_Horror_Films/horror_movie_length.png" width="800">
+
 
 ### **9.10.2019**  
 
