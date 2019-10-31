@@ -40,7 +40,7 @@ activity_df <- nyc_squirrels %>%
   arrange(desc(difference))
 
 #We'll use these labels for the plot instead of teh variable names
-y_labels <- c("Climbing","Kuks", "Moaning", "Indifferent", "Quaas","Flaging tail", "Approaching", "Chasing", "Twiching tail", "Running", "Running away",  "Eating", "Foraging")
+y_labels <- c("Climbing","Kukking", "Moaning", "Indifferent", "Quaaing","Flaging tail", "Approaching", "Chasing", "Twiching tail", "Running", "Running away",  "Eating", "Foraging")
   
 #plott
 g <- ggplot(activity_df,aes(x = AM, xend = PM, y = fct_reorder(activity ,difference)))+
