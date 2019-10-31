@@ -1,0 +1,76 @@
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+nyc_squirrels <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-29/nyc_squirrels.csv")
+library(tidyverse)
+library(extrafont)
+library(ggalt)
+library(ggthemr)
+ggthemr("light")
+
+view(nyc_squirrels)
+```
+
+```{r}
+
+activity_df <- nyc_squirrels %>% 
+#Gathering the different activities to one column
+    gather(key = "activity", value = "condition", c(running:foraging, kuks:runs_from))%>%  
+  #Filtering activities recorded as false or na
+  filter(condition != FALSE & !is.na(condition)) %>% 
+  #changing activitiy to a factor level
+  mutate(activity = as.factor(activity)) %>% 
+  group_by(activity, shift) %>% 
+  #total number of activities per shift
+  summarise(total = n()) %>% 
+  ungroup() %>%
+  #In order to create the geom_dumbbell we need to spread our points:
+  spread(shift, total) %>% 
+  #let's calculate the difference to which we'll reorder the factors by
+  mutate(difference = PM-AM) %>%
+  #relooking at the data.frame
+  arrange(desc(difference))
+
+#We'll use these labels for the plot instead of teh variable names
+y_labels <- c("Climbing","Kuks", "Moaning", "Indifferent", "Quaas","Flaging tail", "Approaching", "Chasing", "Twiching tail", "Running", "Running away",  "Eating", "Foraging")
+  
+#plott
+g <- ggplot(activity_df,aes(x = AM, xend = PM, y = fct_reorder(activity ,difference)))+
+  #Using geom_dumbbell form the ggalt package
+  geom_dumbbell(colour = "grey60", size = 2,
+                colour_x = "#F7BC08", colour_xend = "#395B74")+
+  #Changing y level and other labels
+  scale_y_discrete(label = y_labels)+
+    labs(x = "Number of Squirrels doing that activity", y = "Observed activity", title = "What are squirrels observed doing in central park?",
+         subtitle = paste0(sum(activity_df$AM),  " central park squirrel's activities were observed by the AM shift, and a total of ", sum(activity_df$PM), " activities \nwere observed by the PM shift - Apparently some squirrels were 'multi-tasking'"), caption = "Data: Squirrel Census | @Amit_Levinson")+
+#Adding AM to the points where the AM number is lower than the PM  
+  geom_text(aes(x = AM, y= activity), label = ifelse(activity_df$difference > 0, "AM", " "), size = 3.5, position = position_nudge(x = -16), colour = ifelse(activity_df$difference > 0, "#F7BC08", "#395B74"))+
+#Adding PM to the points where the PM number is higher than the AM
+  geom_text(aes(x= PM, y= activity),label = ifelse(activity_df$difference >0, "PM", ""), size = 3.5,position = position_nudge(x = 16), colour = ifelse(activity_df$difference > 0 , "#395B74", "#F7BC08"))+
+#Because we had two factors with opposite values than the others, we had to
+#do the same only opposite
+    geom_text(aes(x = AM, y= activity), label = ifelse(activity_df$difference < 0, "AM", " "), size = 3.5,position = position_nudge(x = 16), colour = ifelse(activity_df$difference <0, "#F7BC08", "#395B74"))+
+  #And again for the PM group:
+geom_text(aes(x= PM, y= activity),label = ifelse(activity_df$difference <0, "PM", ""), size = 3.5,position = position_nudge(x = -16), colour = ifelse(activity_df$difference < 0 , "#395B74", "#F7BC08"))
+
+#Adding a theme:
+g +theme(
+          text=element_text(family = "Microsoft Tai Le"),
+          plot.title = element_text(size = 20, face = "bold"),
+          plot.subtitle = element_text(size = 13),
+          plot.caption = element_text(size = 8,face = "italic"),
+          axis.text.x = element_text(size = 14),
+          axis.text.y = element_text(size = 11)
+        )
+
+ggsave("Central_park_squirrel.png", width =10, height = 6)
+
+```
