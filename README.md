@@ -10,6 +10,13 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 
 Below are graphs I made, organized in a descending order:
 
+
+### **31.10.2019**
+
+
+<img src="Week44_NYC_Squerrils/Central_park_squirrel.png" width="800">
+
+
 ### **22.10.2019**  
 
 
