@@ -15,7 +15,7 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week44_NYC_Squerrils/Squirrels.Rmd)
 
 <img src="Week44_NYC_Squerrils/Central_park_squirrel.png" width="800">
-</br>
+
 
 ### **22.10.2019**  
 
