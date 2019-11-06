@@ -4,6 +4,8 @@ output:
     flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+editor_options: 
+  chunk_output_type: console
 ---
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -103,7 +105,7 @@ g3 <- ggplot(all_commutes, aes(fill = commute, values = percent_all))+
   scale_x_continuous(limits = c(0,21),breaks = seq(0,20,4), labels = c("0",                            paste0(seq(20,100,20),"%")))+
   labs(title = "Walkers and bikers among all Workers", subtitle ="Each square represnts 1%")+
   theme(text = element_text(family = "Sylfaen"),
-        plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
+        plot.title = element_text(size = 15, face = "bold", hjust = 0.5),
         plot.subtitle = element_text(size = 11, hjust = 0.5),
         legend.text = element_text(size = 11),
         legend.position = "bottom",
