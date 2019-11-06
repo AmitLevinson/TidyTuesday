@@ -13,7 +13,7 @@ Below are graphs I made, organized in a descending order:
 
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week45_bike_walk/bike_walk.Rmd)
 
-<img src="Week45_bike_walk/Bikers_and_walkers.png" width="800">  
+<img src="Week45_bike_walk/bikers_and_walkers.png" width="800">  
 
 ### **31.10.2019**
 
