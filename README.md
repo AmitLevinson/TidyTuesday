@@ -7,7 +7,13 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 </br>
 
 Below are graphs I made, organized in a descending order:
-</br>
+</br>  
+
+### **6.11.2019**
+
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week45_bike_walk/bike_walk.Rmd)
+
+<img src="Week45_bike_walk/Bikers_and_walkers.png" width="800">  
 
 ### **31.10.2019**
 
