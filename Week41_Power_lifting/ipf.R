@@ -38,7 +38,7 @@ g_max <- ggplot(max_score_all, aes(x = year, y = weight, color = activity,shape 
   geom_line(aes(color = activity), size = 1)+
   facet_grid(. ~ sex)+
   labs(y = "Weight (kg)", x = NULL,
-       title = "Max weight lifted across all IPF championships",caption = "Data from: Open Powerlifting | AmitL")+
+       title = "Max weight lifted across all of IPF tournaments",caption = "Data from: Open Powerlifting | AmitL")+
   theme(
     plot.caption = element_text(hjust = 0, size = 8, face= "italic"),
     plot.title = element_text(size = 18),
@@ -68,7 +68,7 @@ g_rewin <- ggplot(competition_name, aes(x = n, y= total, fill = sex)) +
   facet_grid(sex ~ .)+
   scale_x_continuous(breaks = seq(0,12,1))+
   scale_y_continuous(breaks = seq(0,50,5))+
-  labs(y= "# of participants reaching that max", x = "Number of max achieved", 
+  labs(y= "# of participants achieving that max", x = "Number of max achieved", 
        title = "How do the max \nachievements \ndistribute \nacross participants?",
        subtitle = "",
        caption = "")+

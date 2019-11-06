@@ -1,0 +1,126 @@
+---
+title: "Bike and Walk"
+output:
+    flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE, echo = FALSE, cache=TRUE}
+library(tidyverse)
+library(waffle)
+library(extrafont)
+library(ggthemr)
+library(gridExtra)
+ggthemr("pale", type = "outer")
+commute_mode <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-11-05/commute.csv")
+
+```
+
+```{r include=FALSE, echo = FALSE, cache=TRUE}
+#by ACR
+by_acr <- commute_mode %>% 
+  group_by(state_region, mode) %>% 
+  summarise(total = sum(n)) %>% 
+  ungroup() %>%
+  mutate(total = total/1000) %>% 
+  filter(state_region != "NA") %>% 
+  mutate(state_region = fct_reorder(state_region, desc(total))) %>% 
+arrange(desc(total))
+
+#plot
+g <- ggplot(by_acr, aes(fill = mode, values = total))+
+    geom_waffle(n_rows = 20, size = 0.3, colour = "white", flip = TRUE)+
+    coord_equal() +
+  facet_wrap(. ~ state_region, ncol = 4)+
+  labs(title = "Distribution across regions (in thousands)", caption = "Data: | @Amit_Levinson")+
+  theme_minimal()+
+  theme(text = element_text(family = "Sylfaen"),
+        plot.title = element_text (size = 16, face = "bold"),
+        plot.caption = element_text(size = 10, hjust  = 0, face = "italic"),
+        strip.text = element_text (size = 12, color = "black", face = "bold"),
+        legend.title = element_blank(),
+        legend.position = "top",
+        legend.text = element_text(size = 10),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+g
+```
+
+```{r plot_2_by_state}
+
+by_state <- 
+  commute_mode %>% 
+  filter(state_abb != "NA") %>% 
+  mutate(state_abb = as.factor(state_abb))%>% 
+  group_by(state_abb, mode) %>% 
+  summarise(total = sum(n)) %>% 
+  ungroup() %>% 
+  spread(mode, total) %>% 
+  group_by(state_abb) %>% 
+  mutate(total_commuters = Bike+Walk,
+         p_bike = Bike/total_commuters*100,
+         p_walk = Walk/total_commuters*100) %>% 
+  ungroup() %>% 
+  mutate(state_abb = fct_reorder(state_abb, p_bike)) %>% 
+  gather(mode, percentage, p_bike:p_walk)
+
+#plot
+g2 <- ggplot(by_state, aes(x = state_abb, y = percentage, fill = mode), colour = "black")+
+  geom_bar(stat = "identity")+
+  scale_fill_discrete(name = NULL, labels = c("Bike", "Walk"))+
+  scale_y_continuous(labels = function(x) paste0(x, "%"))+
+  labs(title = "Bikers and walkers to work - Distribution across states", x = NULL, y = NULL)+
+  theme_minimal()+
+  theme(text = element_text (family = "Sylfaen"),
+        plot.title = element_text(size = 25, face = "bold"),
+        axis.text.x = element_text(size = 11,angle = 45),
+        axis.text.y = element_text(size = 10),
+        legend.text = element_text(size = 12),
+        legend.position = "top")
+
+g2
+```
+
+```{r include=FALSE, echo = FALSE, cache=TRUE}
+#prospective - data from "American Community Survey Reports"
+percent_all <- c(86.2,5,8.9)
+commute <- c("Private/Van","Public Transport", "Walk, Bike & Other")
+all_commutes <- as.data.frame(percent_all,commute)
+  all_commutes <- all_commutes %>% 
+    mutate(commute = as.character(commute))
+all_commutes$commute <- factor(all_commutes$commute, levels = all_commutes$commute)
+
+
+#plot 2
+g3 <- ggplot(all_commutes, aes(fill = commute, values = percent_all))+
+   geom_waffle(n_rows = 5, size = 0.1, colour = "black")+
+   coord_equal() +
+   scale_fill_manual (name = NULL, values = c("#CCCCCC", "#66CCFF", "#0000FF"),                         labels = c("Private/Van","Public Transport", "Walk, Bike &  Other"))+
+  scale_x_continuous(limits = c(0,21),breaks = seq(0,20,4), labels = c("0",                            paste0(seq(20,100,20),"%")))+
+  labs(title = "Walkers and bikers among all Workers", subtitle ="Each square represnts 1%")+
+  theme(text = element_text(family = "Sylfaen"),
+        plot.title = element_text(size = 14, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(size = 11, hjust = 0.5),
+        legend.text = element_text(size = 11),
+        legend.position = "bottom",
+        legend.title = element_blank(),
+        legend.spacing.x = unit(0.2,"cm"),
+        axis.title = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(),
+        panel.grid = element_blank()
+  )
+
+g3
+```
+
+```{r plotting_all}
+plots <- grid.arrange(g2,g,g3,ncol = 2, nrow =2,
+                      layout_matrix = rbind(c(1,1),c(2,3)))
+
+ggsave(plots, filename = "bikers_and_walkers.png", width =12, height = 10)
+```

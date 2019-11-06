@@ -6,7 +6,6 @@ Basically, every week they publish a new data set where the R community is welco
 I started learning R and saw it as a great opportunity to practice plotting and analzying datasets. If you're looking to get some practice or enjoy analyzing the same data sets as others - Join the party, there's much to learn!  
 </br>
 
-
 Below are graphs I made, organized in a descending order:
 </br>
 
