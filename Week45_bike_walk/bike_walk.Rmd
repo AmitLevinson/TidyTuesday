@@ -32,7 +32,7 @@ g <- ggplot(by_acr, aes(fill = mode, values = total))+
     geom_waffle(n_rows = 20, size = 0.3, colour = "white", flip = TRUE)+
     coord_equal() +
   facet_wrap(. ~ state_region, ncol = 4)+
-  labs(title = "Distribution across regions (in thousands)", caption = "Data: | @Amit_Levinson")+
+  labs(title = "Distribution across regions (in thousands)", caption = "Data: ACS Survey | @Amit_Levinson")+
   theme_minimal()+
   theme(text = element_text(family = "Sylfaen"),
         plot.title = element_text (size = 16, face = "bold"),
