@@ -1,11 +1,5 @@
 ---
 title: "Bike and Walk"
-output:
-    flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
-editor_options: 
-  chunk_output_type: console
 ---
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -23,7 +17,7 @@ commute_mode <- readr::read_csv("https://raw.githubusercontent.com/rfordatascien
 ```
 
 ```{r include=FALSE, echo = FALSE, cache=TRUE}
-#by ACR
+#Get N by ACR
 by_acr <- commute_mode %>% 
   group_by(state_region, mode) %>% 
   summarise(total = sum(n)) %>% 
@@ -33,7 +27,7 @@ by_acr <- commute_mode %>%
   mutate(state_region = fct_reorder(state_region, desc(total))) %>% 
 arrange(desc(total))
 
-#plot
+#plot a waffle plot for # of bikers and walkers by ACR
 g <- ggplot(by_acr, aes(fill = mode, values = total))+
     geom_waffle(n_rows = 20, size = 0.3, colour = "white", flip = TRUE)+
     coord_equal() +
@@ -53,7 +47,7 @@ g
 ```
 
 ```{r plot_2_by_state}
-
+#Look at % of bikers and walkers across states
 by_state <- 
   commute_mode %>% 
   filter(state_abb != "NA") %>% 
@@ -61,6 +55,7 @@ by_state <-
   group_by(state_abb, mode) %>% 
   summarise(total = sum(n)) %>% 
   ungroup() %>% 
+  #Spreading variable in order to compute percentages of each
   spread(mode, total) %>% 
   group_by(state_abb) %>% 
   mutate(total_commuters = Bike+Walk,
@@ -70,7 +65,7 @@ by_state <-
   mutate(state_abb = fct_reorder(state_abb, p_bike)) %>% 
   gather(mode, percentage, p_bike:p_walk)
 
-#plot
+#plot 2 with bar stacked
 g2 <- ggplot(by_state, aes(x = state_abb, y = percentage, fill = mode), colour = "black")+
   geom_bar(stat = "identity")+
   scale_fill_discrete(name = NULL, labels = c("Bike", "Walk"))+
@@ -88,20 +83,23 @@ g2
 ```
 
 ```{r include=FALSE, echo = FALSE, cache=TRUE}
-#prospective - data from "American Community Survey Reports"
+#putting it all in prospective - data from "American Community Survey Reports"
 percent_all <- c(86.2,5,8.9)
 commute <- c("Private/Van","Public Transport", "Walk, Bike & Other")
 all_commutes <- as.data.frame(percent_all,commute)
-  all_commutes <- all_commutes %>% 
+all_commutes <- all_commutes %>% 
     mutate(commute = as.character(commute))
+  #reordering levels
 all_commutes$commute <- factor(all_commutes$commute, levels = all_commutes$commute)
 
 
-#plot 2
+#plot 3 waffle of number of walkers and bikers out of all commuters
 g3 <- ggplot(all_commutes, aes(fill = commute, values = percent_all))+
    geom_waffle(n_rows = 5, size = 0.1, colour = "black")+
    coord_equal() +
+  #adding specifc colors
    scale_fill_manual (name = NULL, values = c("#CCCCCC", "#66CCFF", "#0000FF"),                         labels = c("Private/Van","Public Transport", "Walk, Bike &  Other"))+
+  #Changing scale to meet percentages
   scale_x_continuous(limits = c(0,21),breaks = seq(0,20,4), labels = c("0",                            paste0(seq(20,100,20),"%")))+
   labs(title = "Walkers and bikers among all Workers", subtitle ="Each square represnts 1%")+
   theme(text = element_text(family = "Sylfaen"),
@@ -121,6 +119,7 @@ g3
 ```
 
 ```{r plotting_all}
+#arranging all plots into object
 plots <- grid.arrange(g2,g,g3,ncol = 2, nrow =2,
                       layout_matrix = rbind(c(1,1),c(2,3)))
 
