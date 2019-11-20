@@ -12,7 +12,6 @@ library(lubridate)
 library(ggthemes)
 library(viridis)
 library(extrafont)
-setwd("C:/Users/amitl/OneDrive/Extra/R/TidyTuesday/Week47_nz_birds")
 nz_bird <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-11-19/nz_bird.csv")
 ```
 
