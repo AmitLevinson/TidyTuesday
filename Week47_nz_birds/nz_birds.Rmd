@@ -18,9 +18,8 @@ nz_bird <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/ti
 
 ```{r}
 glimpse(nz_bird)
-nz_bird %>% 
-  count(vote_rank)
 
+  
 #create a new df
 by_date_hour <- 
   nz_bird %>% 
@@ -33,17 +32,21 @@ by_date_hour <-
   #reordering factor levels to fit the weekday scehdule
   mutate(day_of_week = ordered(day_of_week, levels = c("Sunday","Saturday","Friday", "Thursday", "Wednesday","Tuesday",  "Monday")))
 
-#
+#Let's see how many voted on Monday?
 by_date_hour %>% 
   arrange(desc(count))
 
+
+#Plot!
 g <- ggplot(by_date_hour, aes(x = hour,y= day_of_week, fill =count))+
   geom_tile(color = "white", size = 0.1)+
+  #This creates an equal ration for the squares of 1:1
   coord_equal()+
-  #scale_fill_gradient(name = "# Voters" ,low = "white", high = "steelblue")+
+  #Good color scale emphasizing the highest number
   scale_fill_viridis(name = "# Voters")+
   labs(x = NULL, y = NULL, title = "NZ Bird of the Year Voting Distribution across day and time",
        subtitle = "Sunday night's tiredness generates Monday noon's peak diversion interest?",  caption = "Data: Dragonfly Data Science | @Amit_Levinson")+
+  #Wanted to display all hours of the day
   scale_x_continuous(breaks = seq(0,23,1))+
       theme_tufte()
 
