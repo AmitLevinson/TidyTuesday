@@ -9,6 +9,12 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 Below are graphs I made, organized in a descending order:
 </br>  
 
+
+### **5.12.2019**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week49_parking_tickets/parking_tickets.R)  
+
+<img src = "Week49_parking_tickets/parking_tickets.png" width = "800">  
+
 ### **6.11.2019**
 
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week45_bike_walk/bike_walk.Rmd)
