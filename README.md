@@ -23,7 +23,8 @@ Below are graphs I made, organized in a descending order:
 <p align = "center">
 <img src="Week45_bike_walk/bikers_and_walkers.png" width="700">  
 </p>
-### **31.10.2019**
+
+### **31.10.2019**  
 
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week44_NYC_Squerrils/Squirrels.Rmd)
 
