@@ -1,8 +1,6 @@
 library(tidyverse)
 library(maps)
-#library(mapproj)
 library(gganimate)
-#library(transformr)
 library(ggthemes)
 library(extrafont)
 library(viridis)
