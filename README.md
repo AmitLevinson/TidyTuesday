@@ -10,14 +10,14 @@ Below are graphs I made, organized in a descending order:
 </br>  
 
 ### **11.12.2019**  
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week50_diseases/diseases.R)  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week50_diseases/diseases.R)
 
 <p align = "center">
 <img src = "Week50_diseases/measles.gif" width = "700">"
 </p>  
 
 ### **5.12.2019**  
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week49_parking_tickets/parking_tickets.R)  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week49_parking_tickets/parking_tickets.R)
 
 <p align="center">
 <img src = "Week49_parking_tickets/parking_tickets.png" width = "700">
