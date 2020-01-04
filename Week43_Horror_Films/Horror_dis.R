@@ -8,7 +8,7 @@ ggthemr("flat dark", type = 'outer')
 
 horror_movies <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-22/horror_movies.csv")
 
-#Let's clean that that data.frame
+#Let's clean the data.frame
 rating_length <- horror_movies %>% 
   #I first want to have the minutes as numeric value
   mutate(movie_length = as.numeric(str_replace(movie_run_time," min", ""))) %>% 
@@ -28,7 +28,7 @@ top_3 <-
     rating_length %>% 
     group_by(length_cat) %>% 
     top_n(n = 3, wt = review_rating) %>% 
-  #The titles had the year they were released, this created a messey display on the plot
+#The titles had the year they were released, this created a messey display on the plot
     mutate(title = str_replace(title, " \\(.*\\)", ""))
     
   
