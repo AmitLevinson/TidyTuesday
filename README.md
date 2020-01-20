@@ -9,11 +9,17 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 Below are graphs I made, organized in a descending order:
 </br>  
 
+### **20.01.2020**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week4_spotify_songs/spotify_songs.R)
+<p align = "center">
+<img src = "2020/week4_spotify_songs/spotify.png"" width = "700">
+</p>
+
 ### **11.12.2019**  
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week50_diseases/diseases.R)
 
 <p align = "center">
-<img src = "Week50_diseases/measles.gif" width = "700">"
+<img src = "Week50_diseases/measles.gif" width = "700">
 </p>  
 
 ### **5.12.2019**  
