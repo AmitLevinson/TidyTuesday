@@ -22,7 +22,7 @@ word_count <- word_track %>%
   #reordering factor acording to frequency
   mutate(word = fct_reorder(word, n)) %>% 
   #If you decide to use 'nrc' sentiment, not neccessary for 'bing'
-  filter(sentiment %in% c("positive", "negative")) %>% 
+  filter(sentiment %in% c("positive", "negative"), word != "feat") %>% 
   #groupiing so we can slice the top 15 from each group
   group_by(sentiment) %>% 
   slice(1:15)
@@ -59,7 +59,7 @@ ggplot(word_count,aes(word, n))+
         panel.grid.major = element_line(color = "grey70", size = 0.2),
         panel.grid.minor = element_line(color = "grey70", size = 0.2))
         
-ggsave("spotify2.png", height = 4, width = 6)
+ggsave("spotify.png", height = 4, width = 6)
 
 #instead of the unnest_token you can use the stringr::str_extract_all approach
 #(for some reason it gives us 10 less words, plus it seems a little more complicated):
