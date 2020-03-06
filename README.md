@@ -13,7 +13,7 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week10_nhl/nhl.Rmd) | [Link to app](https://amit-levinson.shinyapps.io/tidytuesday_week_10_nhl/)
 
 <p align = "center">
-<img src = "2020/week10_bhl/tt_nhl.gif"" width = "700">
+<img src = "2020/week10_nhl/tt_nhl.gif"" width = "700">
 </p>
 
 
