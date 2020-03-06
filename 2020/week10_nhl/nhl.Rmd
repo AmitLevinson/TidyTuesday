@@ -1,0 +1,105 @@
+---
+title: "Tidytuesday goal stats of NHL players"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+editor_options: 
+  chunk_output_type: console
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(glue)
+library(extrafont)
+theme_set(theme_minimal(base_size = 14))
+```
+
+```{r global, include = FALSE}
+game_goals <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-03-03/game_goals.csv')
+
+average_goals <- game_goals %>% 
+  group_by(season) %>% 
+  summarise(total_goals = sum(goals)/n_distinct(player)) %>% 
+  mutate(player = "Average") %>% 
+  select(player, everything())
+```
+
+Column {.sidebar width=10}
+-----------------------------------------------------------------------
+
+#### **Please select the player you wish to see statistics about:**
+
+```{r}
+selectInput("player", label = NULL, choices = unique(game_goals$player))
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+```{r}
+data_year <- reactive({
+  game_goals %>% 
+  filter(player == input$player) %>% 
+  group_by(player, season) %>%
+  summarise(
+    total_goals = sum(goals)
+  ) %>% 
+    ungroup() %>% 
+    rbind(average_goals) %>% 
+    add_count(season) %>% 
+    filter(n >= 2) %>% 
+    mutate(player = factor(player, c(input$player, "Average"), labels = c(input$player, "Average across players")))
+})
+
+data_year_scales <- reactive({data.frame(
+  "min_scale_x" = min(data_year()$season),
+  "max_scale_x" = max(data_year()$season),
+  "max_scale_y" = max(data_year()$total_goals))
+  })
+
+renderPlot({
+ggplot(data = data_year(), aes(x= season, y = total_goals, color = player))+
+  geom_line(size = 0.8)+
+  scale_x_continuous(breaks = seq(data_year_scales()$min_scale_x, data_year_scales()$max_scale_x, 2))+
+  scale_y_continuous(breaks = seq(0,data_year_scales()$max_scale_y,10), limits = c(0,data_year_scales()$max_scale_y+10))+
+  scale_color_manual(values = c("#0072B2","gray70"))+
+  labs(x = "Season", y = "Goals per season", title = glue("Total goals in a season for {input$player}"))+
+    theme(
+      text = element_text(family = "Miriam"),
+      panel.grid.minor = element_blank(),
+      plot.title = element_text(size = 20),
+      legend.position = "top",
+      legend.title = element_blank()
+      )
+})
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+  
+```{r}
+data_ha_wl <- reactive({
+game_goals %>% 
+  pivot_longer(cols= c(goals:assists), names_to = "long_points") %>%
+  filter(player == input$player) %>% 
+  group_by(long_points) %>% 
+  summarise(total = sum(value))
+})
+
+renderPlot({
+ggplot(data = data_ha_wl(),(aes(x = long_points, y = total,fill = long_points)))+
+  geom_bar(position = "stack", stat = "identity")+
+  labs(x = NULL, y= "Total points", title = glue("Point distribution across games for {input$player}"))+
+  scale_x_discrete(labels = c("Assists", "Goals"))+
+    scale_y_continuous(breaks = seq(0, max(data_ha_wl()$total),100), limits = c(0,max(data_ha_wl()$total +10)))+
+  theme(
+    legend.position = "none",
+    plot.title = element_text(size = 14),
+    text = element_text(family = "Miriam")
+  )
+})
+```
+  
