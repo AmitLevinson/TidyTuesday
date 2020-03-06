@@ -9,6 +9,14 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 Below are graphs I made, organized in a descending order:
 </br>  
 
+### **06.03.2020**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week10_nhl/nhl.Rmd) | [Link to app](https://amit-levinson.shinyapps.io/tidytuesday_week_10_nhl/)
+
+<p align = "center">
+<img src = "2020/week10_bhl/tt_nhl.gif"" width = "700">
+</p>
+
+
 ### **20.01.2020**  
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week4_spotify_songs/spotify_songs.R)
 <p align = "center">
