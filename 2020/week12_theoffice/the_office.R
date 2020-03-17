@@ -23,7 +23,7 @@ office_bigram <-
          !word2 %in% stop_words$word, 
          # filter bigram with the same word:
          word1 != word2) %>%
-  # or filter also words like hey, yeah, mmm from the regrex above:
+  # filter words like hey, yeah, mmm from the regex above:
   filter(!str_detect(word1, str_pattern),
          !str_detect(word2, str_pattern)) %>% 
   count(word1, word2, sort = T) %>% 
