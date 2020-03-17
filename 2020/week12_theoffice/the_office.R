@@ -39,7 +39,7 @@ ggraph(office_bigram, layout = "fr")+
   geom_edge_link(aes(edge_alpha = n), arrow = p_arrow, end_cap =circle(.04, "inches"), show.legend = FALSE)+
   geom_node_point(color = "lightblue", size = 3)+
   geom_node_text(aes(label = name), vjust = 1, hjust = 1)+
-  labs(title = "Top 30 frequent bigrams throughout 'The office' show",
+  labs(title = "Top 30 frequent bigrams throughout 'The office'",
        caption = paste0("bigrams (pair of words) with dupliacted words, stop words and words such as 'yeah', 'uh', mm' were removed. \n",
                         "Darker arrows indicate a higher frequency. Data from: R schrute package | @Amit_Levinson"))+
   theme_void()+
