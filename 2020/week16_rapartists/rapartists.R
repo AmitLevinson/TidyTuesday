@@ -16,7 +16,7 @@ df_points_alone <- rankings %>%
 
 # Get data frame for artists that are playing together
 df_points_together <-  rankings %>%  
-  filter(str_detect(artist,"ft\\.")) %>%
+  filter(str_detect(artist,"ft\\. | & | and")) %>%
   separate(artist, sep = " ft\\. | & | and ", into = c("artist_1", "artist_2", "artist_3", "artist_4")) %>% 
   pivot_longer(cols = artist_1:artist_4, values_to = "artist") %>% 
   drop_na() %>% 
@@ -40,7 +40,7 @@ ggplot(df_join, aes(x = mean_alone, xend = mean_together, y = fct_reorder(artist
   # use `geom_dumbbell` from the ggalt package for a dumbbll plot
   geom_dumbbell(color = "gray70", size = 2, colour_x = "#1B9E77", colour_xend = "#D95F02")+
   labs(title = "Total points awarded to artists recording songs <span style='color:#D95F02'>together</span> vs recording songs <span style='color:#1B9E77'>alone</span>",
-       subtitle = "Out of the 301 BBC Music song list, 25 artists have observations of songs alone and songs together. Half of the artists have\nmore than two alone & two together. For example, The Notorious B.I.G has 4 songs together and 4 songs alone.",
+       subtitle = "Out of the 301 BBC Music song list, 27 artists have songs recorded alone and songs recorded together with other artists. Half of\nthem have more than two records alone and two together. For example, The Notorious B.I.G has 4 songs alone and 4 songs together.",
        caption = "Data: BBC Music | @Amit_Levinson",
        x = "Mean points")+
   theme_minimal()+
@@ -54,4 +54,4 @@ ggplot(df_join, aes(x = mean_alone, xend = mean_together, y = fct_reorder(artist
         plot.subtitle = element_text(color = "gray55"),
         plot.caption = element_text(size = 8, face = "italic"))
 
-ggsave("rap_points.png", width = 11, height = 8, dpi = 1600)
+ggsave("rap_points.png", width = 11, height = 8, dpi = 720)
