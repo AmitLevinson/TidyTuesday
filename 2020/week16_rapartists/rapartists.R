@@ -39,7 +39,7 @@ brewer.pal(n = 8, name = "Dark2")
 ggplot(df_join, aes(x = mean_alone, xend = mean_together, y = fct_reorder(artist, mean_alone)))+
   # use `geom_dumbbell` from the ggalt package for a dumbbll plot
   geom_dumbbell(color = "gray70", size = 2, colour_x = "#1B9E77", colour_xend = "#D95F02")+
-  labs(title = "Total points awarded to artists recording songs <span style='color:#D95F02'>together</span> vs recording songs <span style='color:#1B9E77'>alone</span>",
+  labs(title = "Artists' points for songs recorded <span style='color:#D95F02'>together with others</span> vs songs recorded <span style='color:#1B9E77'>alone</span>",
        subtitle = "Out of the 301 BBC Music song list, 27 artists have songs recorded alone and songs recorded together with other artists. Half of\nthem have more than two records alone and two together. For example, The Notorious B.I.G has 4 songs alone and 4 songs together.",
        caption = "Data: BBC Music | @Amit_Levinson",
        x = "Mean points")+
