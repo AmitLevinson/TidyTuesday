@@ -9,7 +9,24 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 Below are graphs I made, organized in a descending order:
 </br>  
 
-### **06.03.2020**  
+
+### **16.04.2020**
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week16_rapartists/rapartists.R)
+<p align = "center">
+<img src = "2020/week16_rapartists/rap_points.png" width = "700">
+</p>
+
+
+### **17.03.2020**
+
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week12_theoffice/the_office.R)
+<p align = "center">
+<img src = "2020/week12_theoffice/tt_schrute.png" width = "700">
+</p>
+
+
+### **06.03.2020** 
+
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week10_nhl/nhl.Rmd) | [Link to app](https://amit-levinson.shinyapps.io/tidytuesday_week_10_nhl/)
 
 <p align = "center">
@@ -18,6 +35,7 @@ Below are graphs I made, organized in a descending order:
 
 
 ### **20.01.2020**  
+
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week4_spotify_songs/spotify_songs.R)
 <p align = "center">
 <img src = "2020/week4_spotify_songs/spotify.png"" width = "700">
