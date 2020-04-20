@@ -17,7 +17,7 @@ get_data_from_map(download_map_data("custom/europe")) %>%
 euro <- dollar_format(prefix = "", suffix = "\u20ac")
 
 # Manipulate data ---------------------------------------------------------
-gdpr_manipluate <- gdpr_violations %>% 
+gdpr <- gdpr_violations %>% 
   filter(price != 0) %>% 
   group_by(name) %>%
   summarise(count = n(),
@@ -29,7 +29,7 @@ gdpr_manipluate <- gdpr_violations %>%
 # Create map --------------------------------------------------------------
 
 price_map <- hcmap(map = "custom/europe",
-                   data = gdpr_manipluate,
+                   data = gdpr,
                    value = "median_gdpr", # value that our gradient scale will be mapped by
                    joinBy = c("name", "name")) %>%  # Join our data by column that match
   hc_mapNavigation(enabled = TRUE) %>%
@@ -48,10 +48,10 @@ brewer.pal(name = "YlOrRd", n = 9)
 price_map <- price_map %>%
   hc_colorAxis(minColor = "#FFFFCC", maxColor = "#800026") %>% 
   hc_title(text = "Median value of General Data Protection Regulation violations issued by countries") %>%
-  hc_subtitle(text = "Data excludes violations of zero value fine") %>% 
+  hc_subtitle(text = "Data excludes violations of zero value fines") %>% 
   hc_credits(enabled = TRUE,
              text = "Data: Privacy Affairs | @Amit_Levinson",
-             href = "https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-21/readme.md")
+             href = "https://github.com/AmitLevinson/TidyTuesday/tree/master/2020/week17_gdpr")
 
 
 # Fine tuning of fonts and theme:
@@ -68,3 +68,6 @@ saveWidget(final_map, "hc_gdpr.html", selfcontained = TRUE, title = "Tidytuesday
 
 # Please check out the following blog post for a thourough explanation to use maps in {highcharter}:
 # https://kcuilla.netlify.app/post/maps-in-r/
+
+#(dataClasses = color_classes(breaks = c(0, 5000,15000,25000,75000, 100000,150000,200000,300000,max(gdpr$median_gdpr)),
+#                             colors = brewer.pal(name = "YlOrRd", n = 9)))
