@@ -25,7 +25,6 @@ gdpr <- gdpr_violations %>%
   ungroup() %>%
   # Reformat our values for nice display
   mutate(price_eur = euro(median_gdpr))
-
 # Create map --------------------------------------------------------------
 
 price_map <- hcmap(map = "custom/europe",
@@ -47,7 +46,7 @@ brewer.pal(name = "YlOrRd", n = 9)
 # Add color, title and credits:
 price_map <- price_map %>%
   hc_colorAxis(minColor = "#FFFFCC", maxColor = "#800026") %>% 
-  hc_title(text = "Median value of General Data Protection Regulation violations issued by countries") %>%
+  hc_title(text = "General Data Protection Regulation median fines") %>%
   hc_subtitle(text = "Data excludes violations of zero value fines") %>% 
   hc_credits(enabled = TRUE,
              text = "Data: Privacy Affairs | @Amit_Levinson",
