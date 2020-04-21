@@ -67,6 +67,3 @@ saveWidget(final_map, "hc_gdpr.html", selfcontained = TRUE, title = "Tidytuesday
 
 # Please check out the following blog post for a thourough explanation to use maps in {highcharter}:
 # https://kcuilla.netlify.app/post/maps-in-r/
-
-#(dataClasses = color_classes(breaks = c(0, 5000,15000,25000,75000, 100000,150000,200000,300000,max(gdpr$median_gdpr)),
-#                             colors = brewer.pal(name = "YlOrRd", n = 9)))
