@@ -13,16 +13,9 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week18_broadway/broadway.R)
 
 <p align = "center">
-<img src = "2020/week18/broadway.gif" width = "700">
+<img src = "2020/week18_broadway/broadway.gif" width = "700">
 </p>
 
-
-### **22.04.2020**
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week17_gdpr/gdpr.R)
-
-<p align = "center">
-<iframe width ="95%" height="475px" name ="iframe" src="2020/week17_gdpr/hc_gdpr.html"></iframe>
-</p>
 
 ### **16.04.2020**
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week16_rapartists/rapartists.R)
