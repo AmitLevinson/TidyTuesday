@@ -86,23 +86,23 @@ static_plot <-
   guides(color = FALSE, fill = FALSE)+
   theme(text = element_text(family = "Roboto Condensed"),
     axis.text.y = element_blank(),
-    axis.text.x = element_text(size = 14),
+    axis.text.x = element_text(size = 18),
     axis.ticks = element_blank(),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank(),
     panel.grid.major.x = element_line(size = .1, color = "grey"),
     plot.background = element_blank(),
     panel.background = element_blank(),
-    plot.subtitle = element_text(size = 16, color = "gray45"),
-    plot.caption = element_text(size = 12, hjust = 1, face = "italic"),
+    plot.subtitle = element_text(size = 22, color = "gray45"),
+    plot.caption = element_text(size = 14, hjust = 1, face = "italic"),
     plot.margin = margin (2,2,2,4, "cm"),
-    plot.title = element_markdown(size = 24)
+    plot.title = element_markdown(size = 28)
   )
 
 anim <-  static_plot+
     transition_states(years_aired, transition_length = 3, state_length = 0)+
     view_follow(fixed_y = TRUE)+
-    labs(title = "**Top 10 Broadway Grosses**<br><span style='font-size:16pt'>**Number of years screened: {closest_state}**</span>",
+    labs(title = "**Top 10 Broadway Grosses**<br><span style='font-size:22pt'>**Number of years screened: {closest_state}**</span>",
          subtitle = "Gray shows were stopped screening at that time point",
          caption = "Data: Playbill | @Amit_Levinson")
 
