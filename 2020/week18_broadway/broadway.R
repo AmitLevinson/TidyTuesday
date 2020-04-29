@@ -62,7 +62,7 @@ cumulative_df_race <-
   # Create the changing order of the shows: 
   mutate(rank = rank(-cumulative_sum),
          value_lbl = comma(round(cumulative_sum,digits = 0)),
-         # Once the shows stopped running, turn it to gray:
+         # Once the shows stops running, turn it to gray:
          bar_fill = ifelse(is.na(year_month), "gray45", bar_fill),
          # Add a line break for long show names
          show = ifelse(show == "The Book of Mormon", "\nThe Book of \nMormon ",
