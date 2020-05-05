@@ -1,0 +1,42 @@
+```{r}
+library(tidyverse)
+library(tidytext)
+library(ggtext)
+library(stringr)
+library(extrafont)
+library(ggpomological)
+
+user_reviews <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-05/user_reviews.tsv')
+```
+
+
+```{r}
+sentiment_user_review <- user_reviews %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(get_sentiments("bing")) %>% 
+  count(sentiment, word, sort = T) %>%
+  filter(!grepl("like", word)) %>% 
+  group_by(sentiment) %>%
+  top_n(10) %>%
+  ungroup() %>%
+  mutate(word = str_to_title(word),
+         n = ifelse(sentiment == "negative", -n, n),
+         word = reorder(word, n))
+  
+ggplot(sentiment_user_review, aes(x = n, y = word, fill = sentiment))+
+  geom_col(show.legend = F)+
+  scale_x_continuous(breaks = seq(-300,1200,300))+
+  theme_pomological()+
+  scale_fill_manual(values = c(positive = "#919c4c", negative = "#c03728"))+
+  labs(title = paste0("Users top 10 <b><span style='color:#919c4c'>Positive</span></b> and <b><span style='color:#c03728'>Negative</span></b> sentiments of Animal Crossing reviews"), subtitle = "Sentiment analysis excludes the word 'like' which appears 1300+ times in different contexts", caption = "Data: Villager DB | @Amit_Levinson",x = NULL, y = NULL)+
+  theme(text = element_text(size = 18, family = "Roboto Condensed", color = "#a89985"),
+        plot.title = element_markdown(size = 28, hjust = 0, face = "bold"),
+        plot.caption = element_text(size = 10),
+        panel.border = element_blank(),
+        axis.text.y = element_text(size = 18),
+        axis.text.x = element_text(size = 14),
+        plot.margin = margin(3,2,2,2, "mm"))
+
+ggsave("animal_cross.png", width = 16, height = 12, dpi = 720)
+```
+
