@@ -52,21 +52,21 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week50_diseases/diseases.R)
 
 <p align = "center">
-<img src = "Week50_diseases/measles.gif" width = "700">
+<img src = "2019/Week50_diseases/measles.gif" width = "700">
 </p>  
 
 ### **5.12.2019**  
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week49_parking_tickets/parking_tickets.R)
 
 <p align="center">
-<img src = "Week49_parking_tickets/parking_tickets.png" width = "700">
+<img src = "2019/Week49_parking_tickets/parking_tickets.png" width = "700">
 </p>
 
 ### **6.11.2019**
 
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week45_bike_walk/bike_walk.Rmd)
 <p align = "center">
-<img src="Week45_bike_walk/bikers_and_walkers.png" width="700">  
+<img src="2019/Week45_bike_walk/bikers_and_walkers.png" width="700">  
 </p>
 
 ### **31.10.2019**  
@@ -74,7 +74,7 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week44_NYC_Squerrils/Squirrels.Rmd)
 
 <p align = "center">
-<img src="Week44_NYC_Squerrils/Central_park_squirrel.png" width="700">
+<img src="2019/Week44_NYC_Squerrils/Central_park_squirrel.png" width="700">
 </p>
 
 ### **22.10.2019**  
@@ -82,7 +82,7 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week43_Horror_Films/Horror_dis.R)
 
 <p align = "center">
-<img src="Week43_Horror_Films/horror_movie_length.png" width="700">
+<img src="2019/Week43_Horror_Films/horror_movie_length.png" width="700">
 </p>
 </br>
 
@@ -90,7 +90,7 @@ Below are graphs I made, organized in a descending order:
 
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week41_Power_lifting/ipf.R)
 <p align = "center">
-<img src="Week41_Power_lifting/Max_lift.jpeg" width="700">
+<img src="2019/Week41_Power_lifting/Max_lift.jpeg" width="700">
 </p>
 </br>
 
@@ -98,7 +98,7 @@ Below are graphs I made, organized in a descending order:
 
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week40_All%20the%20Pizza/Barstool_Top_2_Percent.R)
 <p align = "center">
-<img src="Week40_All%20the%20Pizza/Barstool_rating.png" width="700">
+<img src="2019/Week40_All%20the%20Pizza/Barstool_rating.png" width="700">
 </p>
 </br>
 
@@ -107,7 +107,7 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2_Week39_SchoolDiversity/School_Diversity_Updated.R)
 
 <p align = "center">
-<img src="2_Week39_SchoolDiversity/Ethnic_div_revised.png" width="700">
+<img src="2019/2_Week39_SchoolDiversity/Ethnic_div_revised.png" width="700">
 </p>
 </br>
 
@@ -116,5 +116,5 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/1_Week38_Number%20of%20Visitors/National%20Parks.R)
 
 <p align = "center">
-<img src="1_Week38_Number%20of%20Visitors/National%20Parks.png" width="700">
+<img src="2019/1_Week38_Number%20of%20Visitors/National%20Parks.png" width="700">
 </p>
