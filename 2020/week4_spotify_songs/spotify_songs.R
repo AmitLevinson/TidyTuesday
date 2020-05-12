@@ -40,7 +40,7 @@ ggplot(word_count,aes(word, n))+
   #creating a log10 scale
   scale_y_log10(breaks = c(1,10,100,1000),
                 labels = trans_format("log10", math_format(10^.x)))+
-  labs(title = "Sentiment analysis of words in song titles",
+  labs(title = "Song Title Sentiment Analysis",
        subtitle = paste0("Analysis was conducted on 5,000 songs from spotify.",
                          " Top 15 most frequent words are shown."),
        caption = "Data: @kaylinquest | plot: @Amit_Levinson")+

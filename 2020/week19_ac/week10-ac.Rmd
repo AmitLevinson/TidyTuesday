@@ -37,6 +37,6 @@ ggplot(sentiment_user_review, aes(x = n, y = word, fill = sentiment))+
         axis.text.x = element_text(size = 14),
         plot.margin = margin(3,2,2,2, "mm"))
 
-ggsave("animal_cross.png", width = 16, height = 12, dpi = 720)
+ggsave("animal_cross.png", width = 16, height = 12, dpi = 520)
 ```
 

@@ -1,0 +1,61 @@
+---
+logo: "https://villagerdb.com/images/villagers/thumb/alice.729310b.png"
+person: 
+  - name: Admiral
+    title: Bird
+    phone: 1-27
+    url: cranky
+    address: stepp hill
+cardwidth: 2.5in
+cardheight: 1.5in
+output: pagedown::business_card
+editor_options: 
+  chunk_output_type: console
+---
+
+<!-- if you prefer black text on white background, set eval=TRUE on the chunk below -->
+
+```{css, eval=TRUE}
+.logo {
+  display: block;
+  margin-right: .1in;
+  padding: .2in 0 0;
+  float: right;
+  height: auto;
+}
+
+.name {
+  margin-top: .05in;
+  color: black;
+}
+
+.title {
+  font-weight: bold;
+  color: black;
+}
+.species {
+  color: black;
+}
+
+.birthday {
+  color: black;
+  font-weight: bold;
+}
+
+.wrapper {
+  color: lightblue;
+  background-color: lightblue;
+  border: 1px dotted black;
+  position: centered;
+}
+
+.coordinates {
+  color: #333;
+}
+```
+
+```{r eval = FALSE}
+villagers <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-05/villagers.csv')
+
+```
+

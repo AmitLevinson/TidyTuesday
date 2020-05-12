@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="author" content="" />
+  <title>Business Card</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+  <style>
+  @page {
+    margin: 0;
+    size: 2.5in 1.5in;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 2.5in;
+    height: 1.5in;
+  }
+  .grid {
+    display: grid;
+    width: 2.5in;
+    height: 1.5in;
+    grid-template-columns: repeat(1, calc(100% / 1));
+    grid-template-rows: repeat(1, calc(100% / 1));
+    justify-items: center;
+    align-items: center;
+  }
+  .wrapper {
+    box-sizing: border-box;
+    width: 2.5in;
+    height: 1.5in;
+    color: white;
+    background-color: black;
+  }
+  @media screen {
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+    .grid {
+      margin: auto;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <template id="card-template">
+  <img class="logo" src="https://villagerdb.com/images/villagers/thumb/alice.729310b.png" alt="Logo" />
+  <div class="me">
+    <div class="name"><slot name="name"><span></span></slot></div>
+    <div class="title"><slot name="title"><span></span></slot></div>
+    <div class="coordinates">
+      <p class="phone"><slot name="phone"><span></span></slot></p>
+      <p class="contact-email"><slot name="email"><span></span></slot></p>
+      <p class="website"><slot name="url"><span></span></slot></p>
+      <slot name="address"><div class="address"></div></slot>
+    </div>
+  </div>
+  <style>
+  .logo {
+    display: block;
+    max-width: 75%;
+    margin: auto;
+    padding: .3in 0 0;
+  }
+  .me {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    line-height: 1.7em;
+    padding: 0.4cm;
+  }
+  .name {
+    font-weight: bold;
+  }
+  .coordinates {
+    color: #bbb;
+    margin-top: 0.5cm;
+    line-height: 1em;
+  }
+  </style>
+  </template>
+
+  
+    <div class="wrapper" data-repeat="1">
+        <span slot="name">Admiral</span>
+        <span slot="title">Bird</span>
+    <span slot="phone">1-27</span>
+    
+    <span slot="url">cranky</span>
+    <div slot="address" class="address">stepp hill</div>
+  </div>
+  
+  <!-- if you prefer black text on white background, set eval=TRUE on the chunk below -->
+  <style type="text/css">
+  .logo {
+    display: block;
+    margin-right: .1in;
+    padding: .2in 0 0;
+    float: right;
+    height: auto;
+  }
+  
+  .name {
+    margin-top: .05in;
+    color: black;
+  }
+  
+  .title {
+    font-weight: bold;
+    color: black;
+  }
+  .species {
+    color: black;
+  }
+  
+  .birthday {
+    color: black;
+    font-weight: bold;
+  }
+  
+  .wrapper {
+    color: lightblue;
+    background-color: lightblue;
+    border: 1px dotted black;
+    position: centered;
+  }
+  
+  .coordinates {
+    color: #333;
+  }
+  </style>
+
+  <script>
+    (() => {
+      // when a card is created using markdown, Pandoc embeds spans in paragraphs
+      // we need to move these spans outside paragraphs to be detected by the template
+      let paragraphs = document.querySelectorAll('.wrapper > p');
+      for (let paragraph of paragraphs) {
+        let wrapper = paragraph.parentElement;
+        for (let element of paragraph.childNodes) {
+          wrapper.appendChild(element);
+        }
+      }
+
+      // repeat cards
+      const maxItemsPerGrid = 1 * 1;
+      let cards = document.querySelectorAll('.wrapper');
+      for (const card of cards) {
+        for (let i = 1; i < card.dataset.repeat; i++) {
+          document.body.insertBefore(card.cloneNode(true), card);
+        }
+      }
+
+      // spread the cards in grids
+      cards = document.querySelectorAll('.wrapper');
+      let cardsArray = Array.from(cards);
+      while (cardsArray.length > 0) {
+        const numberOfItemsToInsertInGrid = Math.min(maxItemsPerGrid, cardsArray.length);
+        let grid = document.createElement('div');
+        grid.className = 'grid';
+        document.body.insertBefore(grid, cardsArray[0]);
+        for (let card of cardsArray.slice(0, numberOfItemsToInsertInGrid)) {
+          grid.appendChild(card);
+        }
+        cardsArray.splice(0, numberOfItemsToInsertInGrid);
+      }
+
+      // build the shadow DOM for each card
+      let templateContent = document.getElementById('card-template').content;
+      let styles = document.querySelectorAll('body > style');
+      for (let card of cards) {
+        let shadowDOM = card.attachShadow({  mode: 'open' });
+        shadowDOM.appendChild(templateContent.cloneNode(true));
+        for (let style of styles) {
+          shadowDOM.innerHTML += '<style>' + style.innerHTML + '</style>';
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

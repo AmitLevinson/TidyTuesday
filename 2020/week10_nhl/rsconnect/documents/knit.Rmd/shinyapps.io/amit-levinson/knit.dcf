@@ -1,0 +1,12 @@
+name: knit
+title: knit
+username:
+account: amit-levinson
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1897193
+bundleId: 2851081
+url: https://amit-levinson.shinyapps.io/knit/
+when: 1583341450.77608
+asMultiple: FALSE
+asStatic: FALSE
