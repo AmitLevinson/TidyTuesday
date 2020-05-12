@@ -1,0 +1,80 @@
+---
+title: "Horror Films"
+author: "Amit Levinson"
+date: "10/23/2019"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+```
+
+Today's TidyTuesday analysis is on horror films rated on IMDb.com.
+Let's start by loading the packages we'll need and load our file:
+
+```{r }
+library(tidyverse)
+library(stringr)
+library(ggbeeswarm)
+library(ggrepel)
+library(extrafont)
+horror_movies <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-22/horror_movies.csv")
+```
+
+Great. let's have a look at our data
+```{r glimpse}
+glimpse(horror_movies)
+```
+
+So I want to look at the rating of the movie in accordance to its length. Do longer horror movies rate higher than shorter ones?  
+The `movie_run_time` is structured as a character and not a numeric value. it contains both our minutes value and a string character of 'min'. we want to eliminate the 'min' part, rendering it suitable for a numeric value:
+
+```{r}
+rating_length <- horror_movies %>% 
+  mutate(movie_length = as.numeric(str_replace(movie_run_time,"min", ""))) %>% 
+  filter(!is.na(movie_length) & !is.na(review_rating))
+```
+
+`stringr::str_replace` is a great function for removing strings and characters. after removing it, i wanted to make sure it's rendered numeric so I used `as.numeric`.\n
+
+Let's look at how the ratings distribute across movie length:
+
+```{r}
+rating_length %>% 
+  ggplot(aes(x = movie_length, y = review_rating))+
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+OK, so we see some sort of a pattern, but it;s not that evident. it might be worth dividing the data frame into groups of duraiton intervals and looking at differences across groups, since in longer movies we'd expect a higher rating.  
+Let's try dividing it into three groups:
+
+```{r}
+rating_length <- rating_length %>% 
+  #creating length categories of the movies
+  mutate(length_cat =  
+         ifelse(movie_length <80, "Under 1:20",
+         ifelse(movie_length >=80 & movie_length < 100, "1:20-1:40", "1:40+")),
+         #Now let's reorder the factor level 
+         length_cat = factor(length_cat, levels = c("Under 1:20","1:20-1:40", "1:40+"))) %>% 
+    select(title, review_rating, movie_length, length_cat)
+```
+
+and now for the plot:
+
+```{r}
+  ggplot(rating_length, aes(y = review_rating, x = length_cat))+
+  #Creating a beeswarm plot
+  geom_quasirandom(alpha = 0.7, width = 0.3)
+```
+
+Hmm, so this shows a little more of a pattern, but not much. I used the `beeswarm package` that can efficiently shows the scatter on a factorial level. I encountered this at [Christian Burkhart blog post](https://ggplot2tutor.com/powerlifting/squats/) analyzing the #TidyTuesday data set on powerlifting.  
+Turning to the plot, the average seems kind of equal, plus the middle group (1:20-1:40) has much more values, so it's not necessarily definite that the correlation exists. However, I like the way the top ranked movies distant themsevls from the rest of the distribution, plus there does seem like a little difference acorss groups.
+
+let's try labeling those top 3 for each group, plus drawing the average point for each distribution:
+
+```{r}
+```
+

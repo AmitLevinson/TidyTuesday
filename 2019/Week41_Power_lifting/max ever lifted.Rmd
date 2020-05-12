@@ -1,0 +1,57 @@
+---
+title: "winner_names"
+author: "Amit Levinson"
+date: "10/11/2019"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+theme_set(theme_light())
+
+ipf_lifts <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-08/ipf_lifts.csv")
+glimpse(ipf_lifts)
+ipf_lifts %>% 
+  count(equipment)
+
+```
+
+
+
+```{r}
+df <- ipf_lifts %>% 
+  mutate(year = as.numeric(format(date, '%Y'))) %>% 
+  select(-date) %>% 
+  gather(activity, weight, best3squat_kg:best3deadlift_kg) %>% 
+  mutate(activity = recode(activity, "best3bench_kg" = "Bench", 
+  "best3deadlift_kg" = "Deadlift", "best3squat_kg" = "Squat")) %>% 
+  filter(place != "DD" & place != "DQ" &           !is.na(weight))
+```
+
+Now let's create our dataset according to 1st place weight from 2000-2019
+```{r}
+highest <- df %>% 
+  group_by(sex, activity, meet_name) %>% 
+  filter(weight == max(weight)) %>% 
+  group_by(activity) %>% 
+  mutate(meet_name = fct_reorder(meet_name, weight))
+
+g <-   ggplot(highest, aes(x = year, y = weight))+
+  geom_col(aes(fill = activity))+
+  coord_flip()+
+  facet_grid(activity ~ sex)
+
+g
+
+count_name <- win %>% 
+  group_by(sex, meet_name) %>% 
+  summarise(total = n())
+
+```
+
