@@ -116,5 +116,5 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2019/1_Week38_Number%20of%20Visitors/National%20Parks.R)
 
 <p align = "center">
-<img src="2019/1_Week38_Number%20of%20Visitors/National%20Parks.png" width="700">
+<img src="2019/1_Week38_Number%20of%20Visitors/National_Parks.png" width="700">
 </p>
