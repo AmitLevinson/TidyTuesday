@@ -55,4 +55,3 @@ volcano_loc_n %>%
            color = "grey10", hjust = 0, size = 5, family = "JetBrains Mono")
 
 ggsave("vc.png", width = 16, height = 10, dpi = 1020)
-setwd("2020/week20_volcano")
