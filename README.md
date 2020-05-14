@@ -9,6 +9,23 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 Below are graphs I made, organized in a descending order:
 </br>  
 
+### **14.05.2020**
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week20_volcano/week20_volcano.R)
+
+<p align = "center">
+<img src = "2020/week20_volcano/vc.png" width = "700">
+</p>
+
+
+
+### **06.05.2020**
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week19_ac/week10-ac.Rmd)
+
+<p align = "center">
+<img src = "2020/week19_ac/animal_cross.png" width = "700">
+</p>
+
+
 ### **29.04.2020**
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week18_broadway/broadway.R)
 
