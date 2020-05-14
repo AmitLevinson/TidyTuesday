@@ -1,83 +1,57 @@
-volcano <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/volcano.csv')
-eruptions <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/eruptions.csv')
-events <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/events.csv')
 library(extrafont)
 library(tidyverse)
-library(ggtext)
-library(ggpomological)
-volcano %>% filter(str_detect(volcano_name, "Tambora")) %>% View()
-volcano_loc_n <- events %>%
-  filter(event_type == "Explosion") %>%
-  distinct(volcano_name, eruption_number, event_type, .keep_all = T) %>%
+library(RColorBrewer)
+library(scales)
+
+volcano <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/volcano.csv')
+eruptions <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/eruptions.csv')
+
+names_annotation <- c("Etna", "Asosan", "Tambora", "Fournaise, Piton de la")
+
+volcano_loc_n <- eruptions %>%
+  distinct(volcano_name, eruption_number, .keep_all = T) %>%
+  filter(eruption_category == "Confirmed Eruption") %>% 
   count(volcano_name, sort = T, name = "n_explosions") %>%
   inner_join(volcano) %>%
-  mutate(highlight_point = ifelse(.$volcano_name %in% names_annotation, "yes", "no"))
+  mutate(highlight_point = ifelse(volcano_name %in% names_annotation, "yes", "no"))
 
-names_annotation <- c("Etna", "Asosan", "Tambora")
 
-arrange(volcano, -(population_within_5_km))
-arrange(eruptions, -(vei))
-
-# labels:
-# most exploded:
-volcano_loc_n %>%
-    filter(n_explosions == max(n_explosions))
-
-eruptions %>% arrange(-vei)
-
-# oldest explosion:
-
-# one options: plot of people living near by and number of explosions
 volcano_loc_n %>% 
   ggplot(data = ., aes(x = population_within_5_km, y= n_explosions, label = volcano_name))+
-  geom_point(color = "red", alpha = 2/10)+
-  geom_point(data = subset(volcano_loc_n, highlight_point == "yes"), color = "red", alpha = 7/10)+
+  geom_point(color = "#E31A1C", alpha = 3/10, size = 4)+
+  geom_point(data = subset(volcano_loc_n, highlight_point == "yes"), color = "#E31A1C", size = 4)+
   scale_x_log10(labels = comma)+
-  labs(title = paste0("<span style='color:red'>**Living with Volcanos**</span>\n Graph shows recorded volcano <span style='color:red'>explosions</span", 
-                      ""), subtitle = "")+
-  theme(text = element_text(family = "JetBrains Mono"),
-        plot.title = element_markdown(),
+  labs(title = "Living with volcanoes",
+       subtitle = "Number of confirmed volcano eruptions with population (log scale) currently living within a 5 kilomoter distance.\nRecorded eruptions range from thousands of years back until a month ago, varying in their degree of explosion.",
+       caption = "Source: Smithsonian | @Amit_Levinson",
+       y = "Number of eruptions",
+       x = "\nPopulation (log) within 5 km")+
+  theme(text = element_text(family = "Roboto Condensed"),
+        #plot.title = element_markdown(color = "#FB9A99"),
+    plot.title = element_text(face = "bold", size = 45),
+    plot.subtitle = element_text(size = 14, color = "grey10"),
+    plot.caption = element_text(size = 9, color = "grey25"),
     plot.background = element_rect(fill = "grey50"),
     panel.background = element_rect(fill = "grey50"),
     panel.grid = element_blank(),
-    axis.text = element_text(color = "grey25", size = 10),
-    axis.ticks = element_blank()
+    axis.text = element_text(color = "grey25", size = 12),
+    axis.title = element_text(color = "grey15", size = 14, hjust = 1),
+    axis.ticks = element_blank(),
+    plot.margin = margin(4,4,2,4, unit = "mm")
   )+
-  annotate(geom = "curve", x = 45, xend = 75, y = 187, yend = 193,
-           curvature = -.2,color = "grey25", size = 0.75, arrow = arrow(length = unit(1, "mm")))+
-  annotate("text", x = 15, y = 181, label = "Etna Volcano (Italy) exploded\n193 times. Today 78 people\nlive in a 5k radius",
-           color = "grey25", hjust = 0, size = 3.5, family = "JetBrains Mono")+
-  annotate(geom = "curve", x = 110000, xend = 76000, y = 160, yend = 165.5,
-           curvature = -.2, color = "grey25", size = 0.75, arrow = arrow(length = unit(1, "mm")))+
-  annotate("text", x = 110000, y = 153, label = "Asosan Volcano (Japan) exploded\n166 times with the last explosion\nin 2020. Today 57,000 people\nlive in a 5k radius.",
-           color = "grey25", hjust = 0, family = "JetBrains Mono", size = 3.5)+
-  annotate(geom = "curve", x = 12000, xend = 4160, y = 42, yend = 6.8,
-           curvature = .2, color = "grey25", size = 0.9, arrow = arrow(length = unit(1, "mm")))+
-  annotate("text", x = 12500, y = 40, label = "Tambora's 1815 eruption is the most\npowerful explosion recorded in human history. Today 4156\npeople live in a 5k radius.",
-           color = "grey25", hjust = 0, size = 3.5, family = "JetBrains Mono")
+  annotate(geom = "curve", x = 45, xend = 72, y = 190, yend = 196,
+           curvature = -.2,color = "grey35", size = 0.75, arrow = arrow(length = unit(1.5, "mm")))+
+  annotate("text", x = 42, y = 181, label = "Etna (Italy), one of the world's most\nactive volcanoes, erupted 196 times. Today\n78 people live within 5k.",
+           color = "grey10", hjust = 0, size = 4, family = "JetBrains Mono")+
+  annotate(geom = "curve", x = 105000, xend =	59000, y = 190, yend =189,
+           curvature = .2, color = "grey35", size = 0.75, arrow = arrow(length = unit(1.5, "mm")))+ # Fournaise
+  annotate(geom = "curve", x = 105000, xend = 80000, y = 179, yend = 171,
+           curvature = -.2, color = "grey35", size = 0.75, arrow = arrow(length = unit(1.5, "mm")))+ # Asosan
+  annotate("text", x = 111000, y = 186, label = "Piton de la Fournaise (top) and Asosan (bottom)\nare both highly active volcanoes that erupted ~190\ntimes. Today some 55,000 people live within 5k.",
+           color = "grey10", hjust = 0, family = "JetBrains Mono", size = 4)+
+  annotate(geom = "curve", x = 3000, xend = 4000, y = 72, yend = 9,
+           curvature = .2, color = "grey35", size = 0.9, arrow = arrow(length = unit(1.5, "mm")))+
+  annotate("text", x = 3000, y = 80, label = "Tambora's (Indonesia) 1815 eruption was the most\npowerful eruption recorded in human history.\nToday 4156 people live in a 5 kilomoter distance.",
+           color = "grey10", hjust = 0, size = 4, family = "JetBrains Mono")
 
-fonts()
- 
-labs(title = "**Top 10 Broadway Grosses**<br><span style='font-size:22pt'>**Number of years screened: {closest_state}**</span>",
-     
-annotate(
-    geom = "curve", x = 4, y = 35, xend = 2.65, yend = 27, 
-    curvature = .3, arrow = arrow(length = unit(2, "mm"))
-  ) +
-  annotate(geom = "text", x = 4.1, y = 35, label = "subaru", hjust = "left")
-
-ggplotly(p)
-library(plotly)
-?geom_mark_circle
-
-volcano_loc_n %>% 
-  mutate(decade = ifelse(last_eruption_year >= 1920, "1", "0")) %>% 
-  count(decade , sort = T) %>% 
-  mutate(decade_perc = n / sum(n)*100)
-
-library(scales)
-events
-
-events %>%
-    filter(event_type == "Explosion")
-    count(event_type, sort = T)
+ggsave("vc.png", width = 18, height = 10, dpi = 1020)
