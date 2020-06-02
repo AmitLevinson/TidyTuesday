@@ -71,21 +71,21 @@ ggplot(data = cumsum_marbles, aes(x = date, y = cum_pnts, group = team_name,  co
   # Provide some extra space for the geom_text
   coord_cartesian(clip = 'off')+
   # Add text only to relevant highlight points and the last date
-  geom_text(data = subset(cumsum_marbles, highlight != "n" & date == max(date)), aes(label = team_name), size = 3.75, hjust = 0, fontface = "bold", show.legend = FALSE)+
+  geom_text(data = subset(cumsum_marbles, highlight != "n" & date == max(date)), aes(label = team_name), size = 3.25, hjust = 0, fontface = "bold", show.legend = FALSE)+
   # Add labs using ggtext in the subtitle
-  labs(x = "Date (2020)", y = "Cummulative Points", title = "Marbles Rolling to Victory", subtitle = "Marble races have never been more exciting with Jelle’s Marble Race. Currently operating as a Youtube channel, the platform<br>offers <b>weekly marble races</b> that'll will keep you on your toes. Data from the past few weeks shows a close match between<br>two teams the <span style='color:#4184A4'><b>Savage Speeders</b></span> and the <span style='color:#FDBCB4'><b>Hazers</b></span>.",
+  labs(x = "Date (2020)", y = "Cummulative Points", title = "Marbles Rolling to Victory", subtitle = "Marble races have never been more exciting with Jelle’s Marble Race. Currently operating as a Youtube channel, the platform<br>offers <b>weekly marble races</b> that'll will keep you on your toes. Data from the past few weeks shows a close match between<br>the two teams the <span style='color:#4184A4'><b>Savage Speeders</b></span> and <span style='color:#FDBCB4'><b>Hazers</b></span>.",
        caption = "Data: Jelle's Marble Runs | @Amit_Levinson")+
   theme(text = element_text(family = "Roboto Condensed"),
-        plot.title = element_text(size = 24, face = "bold"),
-        plot.subtitle = element_markdown(size = 14, color = "grey35"),
+        plot.title = element_text(size = 16, face = "bold"),
+        plot.subtitle = element_markdown(size = 10, color = "grey35"),
         panel.grid = element_blank(),
-        axis.text = element_text(color = "grey50", size = 12),
-        axis.title = element_text(color = "grey50", size = 12),
-        plot.caption = element_text(color = "grey50", size = 11),
+        axis.text = element_text(color = "grey50", size = 9),
+        axis.title = element_text(color = "grey50", size = 9),
+        plot.caption = element_text(color = "grey50", size = 8),
         axis.ticks = element_blank(),
         panel.background = element_blank(),
-        plot.margin = margin(6,2,2,2,"mm"))
+        plot.margin = margin(2,3,2,0,"mm"))
 
 # Save
-ggsave(here("2020", "week23_marble-races" ,"mr.png"), width = 14, height = 10, dpi = 500)
+ggsave(here("2020", "week23_marble-races" ,"mr.png"), width = 11, height = 6, dpi = 600)
 ```
