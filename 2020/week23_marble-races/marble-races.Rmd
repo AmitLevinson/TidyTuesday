@@ -84,7 +84,7 @@ ggplot(data = cumsum_marbles, aes(x = date, y = cum_pnts, group = team_name,  co
         plot.caption = element_text(color = "grey50", size = 8),
         axis.ticks = element_blank(),
         panel.background = element_blank(),
-        plot.margin = margin(2,3,2,0,"mm"))
+        plot.margin = margin(2,3,2,2,"mm"))
 
 # Save
 ggsave(here("2020", "week23_marble-races" ,"mr.png"), width = 11, height = 6, dpi = 600)
