@@ -1,0 +1,91 @@
+---
+title: "Marble Races"
+author: "Amit Levinson"
+date: "6/1/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(tidyverse)
+library(extrafont)
+library(ggtext)
+library(here)
+```
+
+Getting data: 
+
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2020-06-02')
+marbles <- tuesdata$marbles
+
+tidytuesdayR::readme(tuesdata)
+```
+
+```{r}
+glimpse(marbles)
+```
+
+Exploring players time distribution across games for each team?
+
+```{r}
+marbles %>% 
+  group_by(team_name, marble_name) %>% 
+  summarise(mean_time = mean(avg_time_lap)) %>%
+  ungroup() %>% 
+  ggplot()+
+  geom_point(aes(x= mean_time, y= team_name))
+```
+
+Maybe the cummulative points for each team? Yes!
+
+```{r}
+cumsum_marbles <- marbles %>%
+  #remove observations with na points
+  filter(!is.na(points)) %>%
+  group_by(team_name) %>% 
+  # Transform date to date column
+  mutate(date = as.Date(date, format = "%d-%B-%y"),
+         # Make pnts cummulative
+         cum_pnts = cumsum(points)) %>%
+  # remove irrelevant observations
+  distinct(team_name, date,cum_pnts) %>%
+  # create criteria to higlight by
+  mutate(highlight = case_when(team_name == "Savage Speeders" ~ "savage",
+                               team_name == "Hazers" ~ "hazers",
+                               TRUE ~ "n"),
+         # Have the Savage Speeders with a line break (too long of a name)
+         team_name = ifelse(team_name == "Savage Speeders", "Savage\nSpeeders", team_name)) %>% 
+  arrange(-cum_pnts) %>% 
+  ungroup()
+
+
+#plot
+ggplot(data = cumsum_marbles, aes(x = date, y = cum_pnts, group = team_name,  color = highlight))+
+  geom_line(size = 1.15, show.legend = FALSE)+
+  #Provide specific colors for the high-points teams
+  scale_color_manual(values = c("savage" = "#4184A4","hazers" ="#FDBCB4", "n" = "grey90"))+
+  scale_x_date(breaks = "1 week", date_labels = "%b-%d")+
+  scale_y_continuous(breaks = seq(0,100,20))+
+  # Provide some extra space for the geom_text
+  coord_cartesian(clip = 'off')+
+  # Add text only to relevant highlight points and the last date
+  geom_text(data = subset(cumsum_marbles, highlight != "n" & date == max(date)), aes(label = team_name), size = 3.75, hjust = 0, fontface = "bold", show.legend = FALSE)+
+  # Add labs using ggtext in the subtitle
+  labs(x = "Date (2020)", y = "Cummulative Points", title = "Marbles Rolling to Victory", subtitle = "Marble races have never been more exciting with Jelle’s Marble Race. Currently operating as a Youtube channel, the platform<br>offers <b>weekly marble races</b> that'll will keep you on your toes. Data from the past few weeks shows a close match between<br>two teams the <span style='color:#4184A4'><b>Savage Speeders</b></span> and the <span style='color:#FDBCB4'><b>Hazers</b></span>.",
+       caption = "Data: Jelle's Marble Runs | @Amit_Levinson")+
+  theme(text = element_text(family = "Roboto Condensed"),
+        plot.title = element_text(size = 24, face = "bold"),
+        plot.subtitle = element_markdown(size = 14, color = "grey35"),
+        panel.grid = element_blank(),
+        axis.text = element_text(color = "grey50", size = 12),
+        axis.title = element_text(color = "grey50", size = 12),
+        plot.caption = element_text(color = "grey50", size = 11),
+        axis.ticks = element_blank(),
+        panel.background = element_blank(),
+        plot.margin = margin(6,2,2,2,"mm"))
+
+# Save
+ggsave(here("2020", "week23_marble-races" ,"mr.png"), width = 14, height = 10, dpi = 500)
+```
