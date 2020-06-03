@@ -43,16 +43,15 @@ Maybe the cummulative points for each team? Yes!
 ```{r}
 cumsum_marbles <- marbles %>%
   # Make sure filtered to only teams (and not individual players)
-  distinct(team_name, date, points) %>%
+  distinct(team_name, date, points, race) %>%
   #remove observations with na points
-  filter(!is.na(points)) %>%
+  filter(!is.na(points), str_detect(race, "S1R\\d")) %>%
   group_by(team_name) %>%
   # Transform date to date column
   mutate(date = as.Date(date, format = "%d-%B-%y"),
          # Make pnts cummulative
-         cum_pnts = cumsum(points)) %>%
-  # create criteria to higlight by
-  mutate(highlight = case_when(team_name == "Savage Speeders" ~ "savage",
+         cum_pnts = cumsum(points),
+         highlight = case_when(team_name == "Savage Speeders" ~ "savage",
                                team_name == "Hazers" ~ "hazers",
                                TRUE ~ "n"),
          # Have the Savage Speeders with a line break (too long of a name)
@@ -73,14 +72,14 @@ ggplot(data = cumsum_marbles, aes(x = date, y = cum_pnts, group = team_name,  co
   # Add text only to relevant highlight points and the last date
   geom_text(data = subset(cumsum_marbles, highlight != "n" & date == max(date)), aes(label = team_name), size = 3.25, hjust = 0, fontface = "bold", show.legend = FALSE)+
   # Add labs using ggtext in the subtitle
-  labs(x = "Date (2020)", y = "Cummulative Points", title = "Marbles Rolling to Victory", subtitle = "Marble races have never been more exciting with Jelle’s Marble Race. Currently operating as a Youtube channel, the platform<br>offers <b>weekly marble races</b> that'll will keep you on your toes. Data from the past few weeks shows a close match between<br>the two teams the <span style='color:#4184A4'><b>Savage Speeders</b></span> and <span style='color:#FDBCB4'><b>Hazers</b></span>.",
+  labs(x = "Date (2020)", y = "Cummulative Points", title = "Marbles Rolling to Victory", subtitle = "Marble races have never been more exciting with Jelle’s Marble Race. Currently operating as a Youtube channel, the platform<br>offers <b>weekly marble races</b> that'll will keep you on your toes. Data from season one shows a close match between the two<br>teams the <span style='color:#4184A4'><b>Savage Speeders</b></span> and <span style='color:#FDBCB4'><b>Hazers</b></span>.",
        caption = "Data: Jelle's Marble Runs | @Amit_Levinson")+
   theme(text = element_text(family = "Roboto Condensed"),
         plot.title = element_text(size = 20, face = "bold"),
-        plot.subtitle = element_markdown(size = 14, color = "grey35"),
+        plot.subtitle = element_markdown(size = 13, color = "grey35"),
         panel.grid = element_blank(),
-        axis.text = element_text(color = "grey50", size = 11),
-        axis.title = element_text(color = "grey50", size = 11),
+        axis.text = element_text(color = "grey50", size = 10),
+        axis.title = element_text(color = "grey50", size = 10),
         plot.caption = element_text(color = "grey50", size = 8),
         axis.ticks = element_blank(),
         panel.background = element_blank(),
