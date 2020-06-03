@@ -42,15 +42,15 @@ Maybe the cummulative points for each team? Yes!
 
 ```{r}
 cumsum_marbles <- marbles %>%
+  # Make sure filtered to only teams (and not individual players)
+  distinct(team_name, date, points) %>%
   #remove observations with na points
   filter(!is.na(points)) %>%
-  group_by(team_name) %>% 
+  group_by(team_name) %>%
   # Transform date to date column
   mutate(date = as.Date(date, format = "%d-%B-%y"),
          # Make pnts cummulative
          cum_pnts = cumsum(points)) %>%
-  # remove irrelevant observations
-  distinct(team_name, date,cum_pnts) %>%
   # create criteria to higlight by
   mutate(highlight = case_when(team_name == "Savage Speeders" ~ "savage",
                                team_name == "Hazers" ~ "hazers",
