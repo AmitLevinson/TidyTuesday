@@ -1,0 +1,45 @@
+---
+title: "Week-24"
+author: "Amit Levinson"
+date: "6/8/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+
+tuesdata <- tidytuesdayR::tt_load('2020-06-09')
+tuesdata <- tidytuesdayR::tt_load(2020, week = 24)
+firsts <- tuesdata$firsts
+```
+
+```{r}
+firsts
+```
+
+```{r}
+firsts %>% 
+  group_by(decade = 10 * (year %/% 10)) %>% 
+  filter(decade >= 1960) %>% 
+  ungroup() %>% 
+  ggplot(aes(x = decade, fill = category))+
+  geom_bar()+
+  coord_flip()
+```
+
+```{r}
+science <- tuesdata$science
+```
+
+```{r}
+science %>% 
+  count(occupation_s, sort = T)
+```
+
+

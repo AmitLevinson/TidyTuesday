@@ -7,6 +7,7 @@ library(glue)
 library(ggraph)
 library(igraph)
 library(extrafont)
+library(ggtext)
 
 slave_routes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-06-16/slave_routes.csv')
 
