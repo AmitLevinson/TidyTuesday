@@ -13,7 +13,7 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week30-aus_animals/aus-animals.R)
 
 <p align = "center">
-<img src = "2020/week30-aus_animals/aus-animals.png" width = "700">
+<img src = "2020/week30-aus_animals/animal-aus.png" width = "700">
 </p>
 
 
