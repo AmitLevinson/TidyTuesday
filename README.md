@@ -21,7 +21,7 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week25-slavery/shiny-app/app.R)
 
 <p align = "center">
-<img src = "2020/" width = "700">
+<img src = "2020/week25-slavery/tt-week25-slaves.gif" width = "700">
 </p>
 
 
