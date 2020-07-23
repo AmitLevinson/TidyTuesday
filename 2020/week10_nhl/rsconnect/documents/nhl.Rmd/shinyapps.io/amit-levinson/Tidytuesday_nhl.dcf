@@ -1,0 +1,12 @@
+name: tidytuesday_nhl
+title: tidytuesday_nhl
+username:
+account: amit-levinson
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1901999
+bundleId: 2855053
+url: https://amit-levinson.shinyapps.io/tidytuesday_nhl/
+when: 1583439576.02881
+asMultiple: FALSE
+asStatic: FALSE

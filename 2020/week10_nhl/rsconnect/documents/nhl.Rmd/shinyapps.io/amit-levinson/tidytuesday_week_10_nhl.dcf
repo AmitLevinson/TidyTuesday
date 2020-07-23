@@ -1,0 +1,12 @@
+name: tidytuesday_week_10_nhl
+title: tidytuesday_week_10_nhl
+username:
+account: amit-levinson
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1910040
+bundleId: 2856460
+url: https://amit-levinson.shinyapps.io/tidytuesday_week_10_nhl/
+when: 1583486239.21298
+asMultiple: FALSE
+asStatic: FALSE

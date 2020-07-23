@@ -1,0 +1,10 @@
+name: nhl_df
+title: nhl_df
+username:
+account: amit-levinson
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1897171
+bundleId: 2848129
+url: https://amit-levinson.shinyapps.io/nhl_df/
+when: 1583267114.4286

@@ -9,25 +9,90 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 Below are graphs I made, organized in a descending order:
 </br>  
 
-### **11.12.2019**  
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week50_diseases/diseases.R)
+
+### **3.06.2020**
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week23_marble-races/marble-races.Rmd)
 
 <p align = "center">
-<img src = "Week50_diseases/measles.gif" width = "700">"
+<img src = "2020/week23_marble-races/mr.png" width = "700">
+</p>
+
+
+### **14.05.2020**
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week20_volcano/week20_volcano.R)
+
+<p align = "center">
+<img src = "2020/week20_volcano/vc.png" width = "700">
+</p>
+
+
+
+### **06.05.2020**
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week19_ac/week10-ac.Rmd)
+
+<p align = "center">
+<img src = "2020/week19_ac/animal_cross.png" width = "700">
+</p>
+
+
+### **29.04.2020**
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week18_broadway/broadway.R)
+
+<p align = "center">
+<img src = "2020/week18_broadway/broadway.gif" width = "700">
+</p>
+
+
+### **16.04.2020**
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week16_rapartists/rapartists.R)
+<p align = "center">
+<img src = "2020/week16_rapartists/rap_points.png" width = "700">
+</p>
+
+
+### **17.03.2020**
+
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week12_theoffice/the_office.R)
+<p align = "center">
+<img src = "2020/week12_theoffice/tt_schrute.png" width = "700">
+</p>
+
+
+### **06.03.2020** 
+
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week10_nhl/nhl.Rmd) | [Link to app](https://amit-levinson.shinyapps.io/tidytuesday_week_10_nhl/)
+
+<p align = "center">
+<img src = "2020/week10_nhl/tt_nhl.gif"" width = "700">
+</p>
+
+
+### **20.01.2020**  
+
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week4_spotify_songs/spotify_songs.R)
+<p align = "center">
+<img src = "2020/week4_spotify_songs/spotify.png"" width = "700">
+</p>
+
+### **11.12.2019**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2019/Week50_diseases/diseases.R)
+
+<p align = "center">
+<img src = "2019/Week50_diseases/measles.gif" width = "700">
 </p>  
 
 ### **5.12.2019**  
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week49_parking_tickets/parking_tickets.R)
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2019/Week49_parking_tickets/parking_tickets.R)
 
 <p align="center">
-<img src = "Week49_parking_tickets/parking_tickets.png" width = "700">
+<img src = "2019/Week49_parking_tickets/parking_tickets.png" width = "700">
 </p>
 
 ### **6.11.2019**
 
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week45_bike_walk/bike_walk.Rmd)
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2019/Week45_bike_walk/bike_walk.Rmd)
 <p align = "center">
-<img src="Week45_bike_walk/bikers_and_walkers.png" width="700">  
+<img src="2019/Week45_bike_walk/bikers_and_walkers.png" width="700">  
 </p>
 
 ### **31.10.2019**  
@@ -35,47 +100,47 @@ Below are graphs I made, organized in a descending order:
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week44_NYC_Squerrils/Squirrels.Rmd)
 
 <p align = "center">
-<img src="Week44_NYC_Squerrils/Central_park_squirrel.png" width="700">
+<img src="2019/Week44_NYC_Squerrils/Central_park_squirrel.png" width="700">
 </p>
 
 ### **22.10.2019**  
 
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week43_Horror_Films/Horror_dis.R)
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2019/Week43_Horror_Films/Horror_dis.R)
 
 <p align = "center">
-<img src="Week43_Horror_Films/horror_movie_length.png" width="700">
+<img src="2019/Week43_Horror_Films/horror_movie_length.png" width="700">
 </p>
 </br>
 
 ### **9.10.2019**  
 
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week41_Power_lifting/ipf.R)
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2019/Week41_Power_lifting/ipf.R)
 <p align = "center">
-<img src="Week41_Power_lifting/Max_lift.jpeg" width="700">
+<img src="2019/Week41_Power_lifting/Max_lift.jpeg" width="700">
 </p>
 </br>
 
 ### **6.10.2019**  
 
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/Week40_All%20the%20Pizza/Barstool_Top_2_Percent.R)
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2019/Week40_All%20the%20Pizza/Barstool_Top_2_Percent.R)
 <p align = "center">
-<img src="Week40_All%20the%20Pizza/Barstool_rating.png" width="700">
+<img src="2019/Week40_All%20the%20Pizza/Barstool_rating.png" width="700">
 </p>
 </br>
 
 ### **28.9.2019**  
 
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2_Week39_SchoolDiversity/School_Diversity_Updated.R)
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2019/2_Week39_SchoolDiversity/School_Diversity_Updated.R)
 
 <p align = "center">
-<img src="2_Week39_SchoolDiversity/Ethnic_div_revised.png" width="700">
+<img src="2019/2_Week39_SchoolDiversity/Ethnic_div_revised.png" width="700">
 </p>
 </br>
 
 ### **22.9.2019**  
 
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/1_Week38_Number%20of%20Visitors/National%20Parks.R)
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2019/1_Week38_Number%20of%20Visitors/National%20Parks.R)
 
 <p align = "center">
-<img src="1_Week38_Number%20of%20Visitors/National%20Parks.png" width="700">
+<img src="2019/1_Week38_Number%20of%20Visitors/National_Parks.png" width="700">
 </p>
