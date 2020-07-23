@@ -34,7 +34,7 @@ animal_long <- animal_outcomes %>%
   pivot_longer(cols = ACT:WA, names_to = "state") %>%
   # Create a column with a unique name for each animal and state
   mutate(aggregated_name = paste0(animal_type, " - ", state),
-  # Add criteria to higlight
+  # Add criteria to highlight
          highlight_point = case_when(
          aggregated_name == "Wildlife - QLD" ~ "darker",
          aggregated_name == "Cats - NT" ~ "lighter",
@@ -43,7 +43,7 @@ animal_long <- animal_outcomes %>%
   # Create a label for the highlighted values
          value_label = case_when(
            aggregated_name == "Wildlife - QLD" ~ "Wildlife in Queensland (15,690)",
-           aggregated_name == "Cats - NT" ~ "Cats in Northen Territory (5,735)",
+           aggregated_name == "Cats - NT" ~ "Cats in Northern Territory (5,735)",
            TRUE ~ "none"
          )) %>% 
   filter(year %in% c(min(year),max(year))) %>% 
@@ -63,7 +63,7 @@ ggplot(data = animal_long, aes(x = year, y = value, color = highlight_point, gro
   scale_alpha_manual(values = c("none" = 0.5, "darker" = 1, "lighter" = 1))+
   # Remove various legends
   guides(color = "none", alpha = "none")+
-  labs(title = "Animal Euthanization across Australia", subtitle = "Animal Euthanization of Cats, Dogs and Wildlife across Australia for the years 1999 & 2018.<br>Euthanizing of <span style='color:#ED1C24'><b>Wildlife in Queensland</b></span> has been increasing since the 2000's, while that of<br><span style='color:#FF9966'><b>Cats in Northen Territory</b></span> has remained steady but rapidly increased in the past few years.<br>", caption = "Data: RSPCA | @Amit_Levinson")+
+  labs(title = "Animal Euthanization across Australia", subtitle = "Animal Euthanization of Cats, Dogs and Wildlife across Australia for the years 1999 & 2018.<br>Euthanizing of <span style='color:#ED1C24'><b>Wildlife in Queensland</b></span> has been increasing since the 2000's, while that of<br><span style='color:#FF9966'><b>Cats in Northern Territory</b></span> has remained steady but rapidly increased in the past few years.<br>", caption = "Data: RSPCA | @Amit_Levinson")+
   theme_minimal()+
   theme(
     text = element_text(family = "IBM Plex Sans"),
