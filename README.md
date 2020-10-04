@@ -9,7 +9,7 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 Below are graphs I made, organized in a descending order:
 </br>  
 
-### **23.07.2020**  
+### **29.09.2020**  
 Beyonce's lyrics | [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week_40_b_t/week40_beyonce-swift.R)
 
 <p align = "center">
