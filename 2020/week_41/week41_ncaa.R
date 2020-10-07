@@ -6,9 +6,6 @@ library(here)
 
 tournament <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-10-06/tournament.csv')
 
-tournament %>% 
-  filter(tourney_finish == "Champ")
-
 # Extract the champion from each year
 champs <- tournament %>% 
   group_by(year) %>% 
