@@ -9,14 +9,14 @@ tournament <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience
 tournament %>% 
   filter(tourney_finish == "Champ")
 
-# Extract winner from each year
+# Extract the champion from each year
 champs <- tournament %>% 
   group_by(year) %>% 
   filter(tourney_finish == "Champ") %>% 
   select(year, school) %>% 
   mutate(champ = TRUE)
 
-# Extract maximum number of game won each year
+# Extract the maximum number of games won each year
 max_w <- tournament %>% 
   group_by(year) %>% 
   filter(full_w == max(full_w)) %>% 
@@ -24,7 +24,8 @@ max_w <- tournament %>%
 
 joined <- left_join(max_w, champs) %>% 
   group_by(year) %>% 
-  # If no winners this should amount to NA, if there are winner (1 winner per year) it should amount to 1
+  # If there are no cahmpions for max points per year this should amount to NA, 
+  # if there is a champion (1 per year) it should amount to 1.
   summarise(champ = sum(champ)) %>% 
   # Count how many from each category
   count(champ) %>% 
@@ -44,7 +45,7 @@ ggplot(joined, aes(x= 1, y = 1))+
   annotate("text", y = 1.025, x = 0.9575, label = percent(joined[[2,3]]), color = "orange", size = 8, family = t_family)+
   annotate("text", y = 0.99, x = 0.95, label = "of tournaments,\nlosing teams\nhad more wins\nthan the champion", color = "orange", size = 5, hjust = 0, family = t_family)+
   scale_fill_manual(values = c("black", "Orange"))+
-  # Create boundaries with limits
+  # Create boundaries so that we can add the above annotations
   xlim(0.9,1.1)+
   ylim(0.9,1.1)+
   labs(title = "Wins don't guarantee the NCAA championship",
@@ -57,6 +58,6 @@ ggplot(joined, aes(x= 1, y = 1))+
     plot.caption = element_text(hjust = 0, color = "gray35"),
     plot.margin = margin(4,4,4,4, unit = "mm"))
 
-ggsave("ball_plot.png", path =  here("2020", "week_41"), dpi = 500)
+ggsave("ball_plot.png", path =  here("2020", "week_41"), dpi = 320)
 
 
