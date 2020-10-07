@@ -10,7 +10,7 @@ Below are graphs I made, organized in a descending order:
 </br>
 
 ### **6.10.2020**  
-Beyonce's lyrics | [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week_41/week41_ncaa.R)
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week_41/week41_ncaa.R)
 
 <p align = "center">
 <img src = "2020/week_41/ball_plot.png" width = "700">
