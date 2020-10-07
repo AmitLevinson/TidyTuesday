@@ -7,7 +7,16 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 </br>
 
 Below are graphs I made, organized in a descending order:
-</br>  
+</br>
+
+### **6.10.2020**  
+Beyonce's lyrics | [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week_41/week41_ncaa.R)
+
+<p align = "center">
+<img src = "2020/week_41/ball_plot.png" width = "700">
+</p>
+
+
 
 ### **29.09.2020**  
 Beyonce's lyrics | [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week_40_b_t/week40_beyonce-swift.R)

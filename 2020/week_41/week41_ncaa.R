@@ -24,7 +24,7 @@ max_w <- tournament %>%
 
 joined <- left_join(max_w, champs) %>% 
   group_by(year) %>% 
-  # If there are no cahmpions for max points per year this should amount to NA, 
+  # If there are no champions for max points per year this should amount to NA, 
   # if there is a champion (1 per year) it should amount to 1.
   summarise(champ = sum(champ)) %>% 
   # Count how many from each category
