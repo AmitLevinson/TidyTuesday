@@ -6,8 +6,7 @@ on:
 name: Render library update
 
 jobs:
-  render:
-    name: Library update
+  build:
     runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
