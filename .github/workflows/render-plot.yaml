@@ -19,7 +19,7 @@ jobs:
           Rscript -e "install.packages('remotes')"
           Rscript -e "remotes::install_deps(dependencies = TRUE)"
       - name: Render r plot file
-        run: Rscript -e "source('exrta/packages.R')"
+        run: Rscript -e "source('packages-plot.R')"
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
