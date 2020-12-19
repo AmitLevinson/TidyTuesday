@@ -12,14 +12,15 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@v1
       - name: Install package dependencies
-        run:
-          Rscript -e "install.packages('tidyverse')"
-          #Rscript -e "remotes::install_deps(dependencies = TRUE)"
+        run: |-
+          Rscript -e "install.packages('remotes')"
+          Rscript -e "remotes::install_deps(dependencies = TRUE)"
       - name: Render r plot file
-        run: Rscript -e "source('packages-plot.R')"
+        run: |-
+          Rscript -e "source('packages-plot.R')"
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
