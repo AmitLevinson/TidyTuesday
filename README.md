@@ -9,6 +9,15 @@ I started learning R and saw it as a great opportunity to practice plotting and 
 Below are graphs I made, organized in a descending order:
 </br>
 
+
+### **19.12.2020**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week_41/week41_ncaa.R)
+
+<p align = "center">
+<img src = "2020/week51_ninja/week51_ninja.png" width = "700">
+</p>
+
+
 ### **6.10.2020**  
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week_41/week41_ncaa.R)
 
