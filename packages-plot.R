@@ -25,8 +25,6 @@ names(file_lines) <- file_names
 file_packages <- map_dfr(file_lines, ~ tibble(package = str_extract(.x, "((?<=library\\().+(?=\\))|\\w+(?=::))")),.id = "tidytuesday") %>% 
   dplyr::filter(!is.na(package))
 
-file_packages2 %>% 
-  anti_join(file_packages)
 
 # Plot
 file_packages %>% 
