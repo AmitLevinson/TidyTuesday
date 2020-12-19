@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@v1
       - name: Install Package Dependencies
-        run: |
+        run:
           Rscript -e "install.packages('remotes')"
           Rscript -e "remotes::install_deps(dependencies = TRUE)"
       - name: Render r plot file
