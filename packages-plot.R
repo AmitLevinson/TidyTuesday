@@ -21,16 +21,16 @@ file_lines <- map(files, readLines)
 names(file_lines) <- file_names
 
 # Get packages with regex
-file_packages <- map_dfr(file_lines, ~ tibble(package = str_extract(.x, "((?<=library\\().+(?=\\))|\\w+(?=::))")),.id = "tidytuesday")
+file_packages <- map_dfr(file_lines, ~ tibble(package_name = str_extract(.x, "((?<=library\\().+(?=\\))|\\w+(?=::))")),.id = "tidytuesday")
 
-file_packages <- file_packages[!is.na(file_packages$package),]
+file_packages <- file_packages[!is.na(file_packages$package_name),]
 
 # Plot
 file_packages %>% 
-  count(package, sort = T) %>%
+  count(package_name, sort = T) %>%
   slice(1:15) %>% 
   ggplot()+
-  geom_col(aes(y= fct_reorder(package,n), x = n))+
+  geom_col(aes(y= fct_reorder(package_name,n), x = n))+
   labs(title = "Top 15 frequently used packages in #Tidytuesday",
        subtitle = "Plot is automated on every GitHub push this repository",
        x = "Number of times used", y = "Package name",
