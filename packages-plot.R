@@ -11,7 +11,6 @@ files <- list.files(path = "C:/Users/amitl/R_code/tidytuesday", pattern = "\\.R$
 # Remove the packages.R file
 files <- files[-length(files)]
 
-
 # Get names
 file_names <- str_extract(files, '[^/]+(?=\\.)')
 
