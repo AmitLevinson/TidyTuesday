@@ -15,8 +15,7 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - name: Install package dependencies
         run:
-          Rscript -e "install.packages('remotes')"
-          Rscript -e "remotes::install_deps(dependencies = TRUE)"
+          Rscript -e "install.packages('tidyverse')"
       - name: Render r plot file
         run:
           Rscript -e "source('packages-plot.R')"
