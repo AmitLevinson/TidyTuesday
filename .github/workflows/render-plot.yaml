@@ -8,7 +8,7 @@ name: Render library update
 jobs:
   render:
     name: Library update
-    runs-on: macOS-latest
+    runs-on: windows-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
