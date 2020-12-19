@@ -4,5 +4,4 @@
 .Ruserdata
 *.Rproj
 .here
-packages.R
 README.Rmd
