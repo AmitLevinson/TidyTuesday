@@ -10,6 +10,13 @@ Below are graphs I made, organized in a descending order:
 </br>
 
 
+
+<p align = "center">
+<img src = "extra/packages-used.png" width = "700">
+</p>
+
+
+
 ### **19.12.2020**  
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week_41/week41_ncaa.R)
 
