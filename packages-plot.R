@@ -37,7 +37,6 @@ file_packages %>%
        caption = paste0("Last updated:\n",format(Sys.Date(), "%b %d, %Y")))+
   theme_minimal()+
   theme(
-    text = element_text(family = "Calibri"),
     plot.title = element_text(size = 16),
     plot.title.position = "plot",
     plot.subtitle = element_text(size = 12, color = "gray20"),
