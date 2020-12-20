@@ -42,13 +42,13 @@ file_packages %>%
   theme_minimal()+
   theme(
     text = element_text(family = "Roboto"),
-    plot.title = element_text(size = 24),
+    plot.title = element_text(size = 20),
     plot.title.position = "plot",
-    plot.subtitle = element_text(size = 16, color = "gray20"),
+    plot.subtitle = element_text(size = 15, color = "gray20"),
     plot.caption = element_text(color = "gray30", face = "italic"),
-    axis.title = element_text(color = "gray40"),
-    axis.text.x = element_text(size = 14),
-    axis.text.y = element_text(size = 16),
+    axis.title = element_text(color = "gray40", size = 12),
+    axis.text.x = element_text(size = 10),
+    axis.text.y = element_text(size = 12),
     plot.margin = unit(c(4,2,2,4), "mm")
   )
 
