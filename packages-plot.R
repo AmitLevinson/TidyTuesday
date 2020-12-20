@@ -5,7 +5,7 @@ library(tidyr)
 library(ggplot2)
 library(forcats)
 
-# Read all R or Rmd files
+# Read all R or Rmd files.
 files <- list.files(path = "C:/Users/amitl/R_code/tidytuesday", pattern = "\\.R$|.Rmd$", recursive = TRUE)
 
 # Remove the packages.R file
