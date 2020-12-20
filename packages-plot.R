@@ -36,7 +36,7 @@ file_packages %>%
   ggplot()+
   geom_col(aes(y= fct_reorder(package_name,n), x = n))+
   labs(title = "Top 15 frequently used packages in #Tidytuesday",
-       subtitle = "Plot is automated on every GitHub push this repository",
+       subtitle = "Plot is automated on every push to this repository",
        x = "Number of times used", y = "Package name",
        caption = paste0("Last updated:\n",format(Sys.Date(), "%b %d, %Y")))+
   theme_minimal()+
@@ -44,7 +44,7 @@ file_packages %>%
     text = element_text(family = "Roboto"),
     plot.title = element_text(size = 20),
     plot.title.position = "plot",
-    plot.subtitle = element_text(size = 15, color = "gray20"),
+    plot.subtitle = element_text(size = 13, color = "gray20"),
     plot.caption = element_text(color = "gray30", face = "italic"),
     axis.title = element_text(color = "gray40", size = 12),
     axis.text.x = element_text(size = 10),
