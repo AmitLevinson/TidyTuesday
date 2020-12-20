@@ -6,7 +6,7 @@ library(ggplot2)
 library(forcats)
 
 # Read all R or Rmd files
-files <- list.files(path = "C:/Users/amitl/R_code/tidytuesday", pattern = "\\.R$|.Rmd$", recursive = TRUE)
+files <- list.files( pattern = "\\.R$|.Rmd$", recursive = TRUE)
 
 # Remove the packages.R file
 files <- files[-length(files)]
