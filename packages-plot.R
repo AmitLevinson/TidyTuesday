@@ -36,7 +36,7 @@ file_packages %>%
   ggplot()+
   geom_col(aes(y= fct_reorder(package_name,n), x = n))+
   labs(title = "Top 15 frequently used packages in #Tidytuesday",
-       subtitle = "Plot is rendered on every initial push to the repository",
+       subtitle = "Plot is rendered on every initial push to this repository",
        x = "Number of times used", y = "Package name",
        caption = paste0("Last updated:\n",format(Sys.Date(), "%b %d, %Y")))+
   theme_minimal()+
