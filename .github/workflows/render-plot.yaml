@@ -7,8 +7,8 @@ jobs:
     runs-on: macOS-latest
     if: "contains(github.event.head_commit.message, 'initial commit')"
     steps:
-      - uses: actions/checkout@v1
-      - uses: r-lib/actions/setup-r@v2
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
       - name: Install package dependencies
         run:
           Rscript -e "install.packages(c('tidyverse', 'showtext'))"
@@ -18,5 +18,5 @@ jobs:
       - name: Commit results
         run: |
           git add extra/packages-used.png
-          git commit -m 'Re-build package plot' || echo "No changes to commit"
-          git push origin || echo "No changes to commit"
+          git commit -m 'Re-build library-plot'
+          git push origin
