@@ -9,7 +9,7 @@ library(showtext)
 font_add_google("Roboto Condensed", "Roboto")
 showtext_auto()
 
-# Read all R or Rmd files.
+# Read all R or Rmd files
 files <- list.files( pattern = "\\.R$|.Rmd$", recursive = TRUE)
 
 # Remove the packages.R file
