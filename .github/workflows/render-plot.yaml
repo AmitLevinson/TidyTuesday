@@ -1,8 +1,9 @@
 name: Render library update
 on:
   push:
-    branches:
-      - master
+    paths:
+    - '**.R'
+    - '**.Rmd'
 
 jobs:
   build:
