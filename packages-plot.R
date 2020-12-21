@@ -9,7 +9,7 @@ library(showtext)
 font_add_google("Roboto Condensed", "Roboto")
 showtext_auto()
 
-# Read all R or Rmd files
+# Read all R or Rmd files.
 files <- list.files( pattern = "\\.R$|.Rmd$", recursive = TRUE)
 
 # Remove the packages-plot.R file
@@ -36,7 +36,7 @@ file_packages %>%
   ggplot()+
   geom_col(aes(y= fct_reorder(package_name,n), x = n))+
   labs(title = "Top 15 frequently used packages in #Tidytuesday",
-       subtitle = "Plot is rendered on every initial push to this repository",
+       subtitle = "Plot is rendered on every initial push to the repository",
        x = "Number of times used", y = "Package name",
        caption = paste0("Last updated:\n",format(Sys.Date(), "%b %d, %Y")))+
   theme_minimal()+
