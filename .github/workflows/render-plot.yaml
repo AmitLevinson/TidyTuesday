@@ -2,6 +2,8 @@ name: Render library update
 
 on:
   push:
+    - master
+    - main
 
 jobs:
   build:
