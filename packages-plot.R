@@ -26,7 +26,8 @@ names(file_lines) <- file_names
 
 # Get packages with regex
 file_packages <- map_dfr(file_lines, ~ tibble(package_name = str_extract(.x, "((?<=library\\().+(?=\\))|\\w+(?=::))")),.id = "tidytuesday") %>% 
-  dplyr::filter(!is.na(package_name))
+  filter(!is.na(package_name))%>% 
+  distinct(tidytuesday, package)
 
 
 # Plot
