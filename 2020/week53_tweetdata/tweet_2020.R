@@ -16,13 +16,13 @@ data_2020 <- tt %>%
 week_count <- data_2020 %>% 
   count(week_count, sort = T)
 
-# Get weeks I participated in
+# Get week numbers I participated in
 amit_participate_in <- data_2020 %>% 
   filter(str_detect(screen_name, "Amit_Levinson")) %>%
   count(week_count) %>% 
   pull(week_count)
 
-# Get info for the week
+# Get full info for the week (name of the data, date, etc.)
 week_name <- read_html("https://github.com/rfordatascience/tidytuesday") %>% 
   html_node("table") %>% 
   html_table()
@@ -32,7 +32,7 @@ week_data_full <- left_join(week_count, week_name, by = c("week_count" = "Week")
   # Create the axis categories and use ggtext for lighter data info
   mutate(name = glue("{Data}<br><span style='color:gray65'>({month(Date, label = TRUE)}, {day(Date)})</span>"),
          al_participated = ifelse(week_count %in% amit_participate_in, "yes", "no"),
-         # Fix a few I probably posted in the following week :(
+         # Fix a few weeks I posted in but in the following week :(
          al_participated = case_when(
            # Didn't participate in the IKEA week
            week_count == 45 ~ "no",
@@ -45,7 +45,7 @@ ggplot(week_data_full)+
   geom_col(aes(y = fct_reorder(name, n), x = n, fill = al_participated), show.legend = FALSE)+
   labs(title = "#Tidytuesday weeks with the most contributions",
        subtitle = "Only tweets containing photos were aggregated. <b><span style='color:#453F78'>Highlighted are the weeks I participated in.</span></b><br>Caveat: individuals might\npost their analysis in following week from the original data.",
-       x = "#TidyTuesday tweets with photos", y = "Data (Date)\n", caption = "Data: Tidytuesday & Thomas Mock\n visualizaiton: @Amit_Levinson")+
+       x = "Number of #TidyTuesday tweets (with photos)", y = "Data (Date)\n", caption = "Data: Tidytuesday & Thomas Mock\n visualization: @Amit_Levinson")+
   scale_fill_manual(values = c("yes" = "#453F78", "no" = "gray55"))+
   theme_minimal()+
   theme(
@@ -56,7 +56,7 @@ ggplot(week_data_full)+
     plot.caption = element_text(size = 8, color = "gray35"),
     axis.text.y = element_markdown(hjust = 0, size = 10),
     axis.text.x = element_text(size = 8),
-    axis.title = element_text(size = 10, color = "gray35"),
+    axis.title = element_text(size = 10, color = "gray45"),
     plot.margin = margin(4,2,2,4, "mm"))
 
 
