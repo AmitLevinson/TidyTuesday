@@ -44,7 +44,7 @@ week_data_full <- left_join(week_count, week_name, by = c("week_count" = "Week")
 ggplot(week_data_full)+
   geom_col(aes(y = fct_reorder(name, n), x = n, fill = al_participated), show.legend = FALSE)+
   labs(title = "#Tidytuesday weeks with the most contributions",
-       subtitle = "Only tweets containing photos were aggregated. <b><span style='color:#453F78'>Highlighted are the weeks I participated in.</span></b><br>Caveat: individuals might\npost their analysis in following week from the original data.",
+       subtitle = "Only tweets containing photos were aggregated. <b><span style='color:#453F78'>Highlighted are weeks I participated in.</span></b><br>Caveat: individuals might\npost their analysis in following week from the original data.",
        x = "Number of #TidyTuesday tweets (with photos)", y = "Data (Date)\n", caption = "Data: Tidytuesday & Thomas Mock\n visualization: @Amit_Levinson")+
   scale_fill_manual(values = c("yes" = "#453F78", "no" = "gray55"))+
   theme_minimal()+
