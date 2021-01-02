@@ -13,8 +13,6 @@ Below is a graph depicting my frequently used packages in #Tidytuesday, automati
 <img src = "extra/packages-used.png" width = "700">
 </p>
 
-
-
 ## My various submissions
 
 <br>
