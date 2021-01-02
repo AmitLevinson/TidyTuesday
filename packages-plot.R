@@ -36,8 +36,8 @@ file_packages %>%
   slice(1:15) %>% 
   ggplot()+
   geom_col(aes(y= fct_reorder(package_name,n), x = n), fill = "gray45")+
-  labs(title = "Top 15 frequently used packages in #Tidytuesday",
-       subtitle = "Plot is rendered on every 'initial commit' to this repository",
+  labs(title = "Frequently used packages in #Tidytuesday",
+       subtitle = "Plot is rendered on every 'initial commit' to this repository, showcasing my 15 most frequently\nused packages in #TidyTuesday",
        x = "Number of times used", y = "Package name",
        caption = paste0("Last updated:\n",format(Sys.Date(), "%b %d, %Y")))+
   theme_minimal()+
