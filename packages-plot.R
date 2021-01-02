@@ -55,6 +55,3 @@ file_packages %>%
   )
 
 ggsave("extra/packages-used.png", width = 8, height = 5)
-# usethis::use_github_action("render-readme.yaml")
-# usethis::use_github_actions()
-# https://fromthebottomoftheheap.net/2020/04/30/rendering-your-readme-with-github-actions/
