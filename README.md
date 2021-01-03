@@ -5,7 +5,7 @@ TidyTuesday is *"A weekly data project aimed at the R ecosystem. [...] an emphas
 Basically, every week they publish a new data set where the R community is welcome to analyze and visualize data (Actually, in general, I think any programming language is welcome according to their guidelines). I started learning R and saw it as a great opportunity to practice plotting and analzying datasets. If you're looking to get some practice or enjoy analyzing the same data sets as others - Join the party, there's much to learn. 
 </br>
 
-Below is a graph depicting my frequently used packages in #Tidytuesday, automatically updating on every push to this repository.
+Below is a graph depicting my frequently used packages in #Tidytuesday, automatically updating on every push to this repository ([See my blog post explaining the process](https://amitlevinson.com/blog/automated-plot-with-github-actions/)).
 </br>
 
 
