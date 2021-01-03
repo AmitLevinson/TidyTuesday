@@ -38,7 +38,8 @@ file_packages %>%
   labs(title = "Frequently used packages in #Tidytuesday",
        subtitle = "Plot is rendered on every 'initial commit' to this repository, showcasing my 15 most frequently\nused packages in #TidyTuesday",
        x = "Number of times used", y = "Package name",
-       caption = paste0("Last updated:\n",format(Sys.Date(), "%b %d, %Y")))+
+       caption = paste0("Total scripts: ", length(file_names),
+                        "\nLast updated",format(Sys.Date(), "%b %d, %Y")))+
   theme_minimal()+
   theme(
     text = element_text(family = "Roboto"),
