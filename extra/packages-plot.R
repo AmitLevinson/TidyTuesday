@@ -1,9 +1,7 @@
 library(purrr)
 library(stringr)
 library(dplyr)
-library(tidyr)
 library(ggplot2)
-library(forcats)
 library(showtext)
 
 font_add_google("Roboto Condensed", "Roboto")
@@ -13,7 +11,7 @@ showtext_auto()
 files <- list.files( pattern = "\\.R$|.Rmd$", recursive = TRUE)
 
 # Remove the packages-plot.R file
-files <- files[-length(files)]
+files <- files[!str_detect(files, "packages-plot.R")]
 
 # Get names
 file_names <- str_extract(files, '[^/]+(?=\\.)')
@@ -33,9 +31,10 @@ file_packages <- map_dfr(file_lines, ~ tibble(package_name = str_extract(.x, "((
 # Plot
 file_packages %>% 
   count(package_name, sort = T) %>%
+  mutate(package_name = factor(package_name, levels = rev(package_name))) %>% 
   slice(1:15) %>% 
   ggplot()+
-  geom_col(aes(y= fct_reorder(package_name,n), x = n), fill = "gray45")+
+  geom_col(aes(y= package_name, x = n), fill = "gray45")+
   labs(title = "Frequently used packages in #Tidytuesday",
        subtitle = "Plot is rendered on every 'initial commit' to this repository, showcasing my 15 most frequently\nused packages in #TidyTuesday",
        x = "Number of times used", y = "Package name",
