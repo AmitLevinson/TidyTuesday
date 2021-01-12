@@ -109,7 +109,6 @@ theme = reactableTheme(
     borderColor = "#F1F1F1"
   )
 ))
-tbl
 ```
 
 ```{css}
