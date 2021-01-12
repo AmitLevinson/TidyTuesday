@@ -1,0 +1,131 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+library(readr)
+library(dplyr)
+library(reactable)
+library(glue)
+library(here)
+library(htmltools)
+library(stringr)
+library(hrbrthemes)
+library(extrafont)
+```
+
+
+```{r}
+artwork <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-12/artwork.csv')
+artists <- read_csv("https://github.com/tategallery/collection/raw/master/artist_data.csv")
+```
+
+
+```{r}
+react_df <- artwork %>% 
+  left_join(artists, by = c("artist" = "name")) %>% 
+  mutate(gender = case_when(
+    gender == "Male" ~ "M",
+    gender == "Female" ~ "F",
+    TRUE ~ "\u2718"
+  ),
+  dates = case_when(
+    str_detect(dates, "born") & is.na(yearOfDeath) ~ paste0(yearOfBirth, "-"),
+    str_detect(dates, "born") & !is.na(yearOfDeath) ~ paste0(yearOfBirth, "-", yearOfDeath),
+    TRUE ~ dates
+  )) %>% 
+  select(-c(1,accession_number, artistId, dateText, dimensions, width, height,depth, units, inscription, artistRole,url.x,  placeOfDeath, id.y, thumbnailCopyright, yearOfBirth, yearOfDeath)) 
+  # When working on the table, easier to work with 100 at a time
+  #slice_sample(., n = 100) 
+
+# Make a table just for the artist in which we'll nest their work in
+artist_df <- distinct(react_df, artist, gender, dates, placeOfBirth)
+```
+
+```{r}
+# Create function for fonts and text
+# Large indicates the bigger table
+text_style <- function (x = "large"){
+  list(
+      fontFamily = "IBM Plex Sans",
+      fontSize = ifelse(x == "large", "15px", "14px"),
+      verticalAlign = "center")
+  }
+
+header_style <- function (x = "large"){
+  list(
+      textAlign = "left",
+      fontSize = ifelse(x == "large","18px", "15px"),
+      fontWeight = "550",
+      borderBottom = "2px solid #e9edf0",
+      paddingBottom = "4px",
+      verticalAlign = "bottom",
+      fontFamily = ifelse(x == "large", "Roboto Condensed", "IBM Plex Sans"),
+      background = ifelse(x =="large", "#F1F1F1", "white")
+  )}
+```
+
+
+```{r}
+tbl <- reactable(artist_df, details = function(index){
+  # Create nested table of artist's inforomation
+  artist_work <- react_df[react_df$artist == artist_df$artist[index],] %>% 
+    select(title, medium, year, acquisitionYear, thumbnailUrl)
+  # Layout of the table
+  htmltools::div(
+    reactable(artist_work,  outlined = TRUE, fullWidth = TRUE, defaultSorted = "year",
+              defaultColDef = colDef(headerStyle = header_style (x= "small"), style = text_style(x = "small")),
+              columns = list(
+      title = colDef(name = "Art Title", minWidth = 140),
+      medium = colDef(name = "Medium"),
+      year = colDef(name = "Year created", align = 'center', cell = function(value) ifelse(!is.na(value), "\u2718", value)),
+      acquisitionYear = colDef(name = "Acquisition year", align = 'center'),
+      # Have the iamge appear in the column cell
+      thumbnailUrl = colDef(name = "Painting", align = 'center', cell = function(value){
+        if(!is.na(value)){
+        htmltools::tags$img(src = value, width = "120px", height = "120px", border="3px")}
+        else("\u2718")
+        })
+    )))
+},
+# Additional info for the Artist table
+pagination = TRUE, defaultPageSize = 20, compact = FALSE, borderless = FALSE, fullWidth = TRUE,
+defaultColDef = colDef(headerStyle = header_style(x= "large"),
+                       style = text_style(x = "large")),
+# Add hyper link of the artist for more information
+columns = list(artist = colDef(name = "Artist", minWidth = 140, cell = function(value){
+  if(!is.na(value)){
+  artist_url <- unique(react_df$url.y[react_df$artist == value])
+  tags$a(href = artist_url, target = "_blank", value)}
+  else{value}
+}),
+gender = colDef(name = "Gender", align = 'center'),
+dates = colDef(name = "Years", cell = function(value) ifelse(is.na(value), "\u2718", value)),
+placeOfBirth = colDef(name = "Place of birth", minWidth = 120, cell = function(value){
+  ifelse(!is.na(value), value, "\u2718")
+})),
+theme = reactableTheme(
+  headerStyle = list(
+    "&:hover[aria-sort]" = list(background = "hsl(0, 0%, 96%)"),
+    "&[aria-sort='ascending'], &[aria-sort='descending']" = list(background = "hsl(0, 0%, 96%)"),
+    borderColor = "#F1F1F1"
+  )
+))
+```
+
+```{css}
+.title h2 {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: "Roboto Condensed";
+}
+```
+
+```{r}
+div(
+  div(
+  class = "title", 
+  h2(paste0("Tate Artists and Work ", emo::ji("painter"), emo::ji("paint")))),
+  tbl,
+  tags$span(style = "color:#C8C8C8;", "Table: @Amit_Levinson | Data: Art Collections From the Tate Collection"))
+```
