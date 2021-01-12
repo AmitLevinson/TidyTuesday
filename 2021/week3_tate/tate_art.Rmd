@@ -7,10 +7,8 @@ library(readr)
 library(dplyr)
 library(reactable)
 library(glue)
-library(here)
 library(htmltools)
 library(stringr)
-library(hrbrthemes)
 library(extrafont)
 ```
 
@@ -34,7 +32,7 @@ react_df <- artwork %>%
     str_detect(dates, "born") & !is.na(yearOfDeath) ~ paste0(yearOfBirth, "-", yearOfDeath),
     TRUE ~ dates
   )) %>% 
-  select(-c(1,accession_number, artistId, dateText, dimensions, width, height,depth, units, inscription, artistRole,url.x,  placeOfDeath, id.y, thumbnailCopyright, yearOfBirth, yearOfDeath)) 
+  select(-c(1,accession_number, artistId, dateText, dimensions, width, height,depth, units, inscription, artistRole,url.x,  placeOfDeath, id.y, thumbnailCopyright, yearOfBirth, yearOfDeath))
   # When working on the table, easier to work with 100 at a time
   #slice_sample(., n = 100) 
 
@@ -89,7 +87,7 @@ tbl <- reactable(artist_df, details = function(index){
     )))
 },
 # Additional info for the Artist table
-pagination = TRUE, defaultPageSize = 20, compact = FALSE, borderless = FALSE, fullWidth = TRUE,
+searchable = TRUE, pagination = TRUE, defaultPageSize = 20, compact = FALSE, borderless = FALSE, fullWidth = TRUE,
 defaultColDef = colDef(headerStyle = header_style(x= "large"),
                        style = text_style(x = "large")),
 # Add hyper link of the artist for more information
@@ -111,6 +109,7 @@ theme = reactableTheme(
     borderColor = "#F1F1F1"
   )
 ))
+tbl
 ```
 
 ```{css}
