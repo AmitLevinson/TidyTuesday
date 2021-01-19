@@ -51,20 +51,20 @@ ggplot(kenya_plot)+
    annotate(geom = "curve", x = 41.1, xend = 40.8 , y = 1, yend = -0.1,
            curvature =-.2,  color = "#8C510A", size = 0.75, arrow = arrow(length = unit(1.5, "mm")))+
   coord_sf(xlim = c(33.8, 42), clip = 'off')+
-  labs(title = paste0("Gender Differences in Counties Across ",kenya_html),
+  labs(title = paste0("Gender Distribution in Counties Across ",kenya_html),
        caption = "Data: RKenyaCensus\n@Amit_Levinson")+
   theme_void()+
   theme(
     text = element_text(family = "IBM Plex Sans"),
     plot.title.position = "plot",
     plot.title = element_markdown(face = "bold", size = 22),
-    plot.caption = element_text(face = 'italic', color = 'gray25'), 
+    plot.caption = element_text(size = 9, face = 'italic', color = 'gray25'), 
     legend.direction = 'horizontal',
     legend.position=c(0.2,0.13),
     legend.background = element_blank(),
     legend.title.align = 0,
-    legend.title = element_markdown(size = 12, color = "gray35"),
-    legend.text = element_text(size = 10, color = "gray25"),
+    legend.title = element_markdown(size = 13, color = "gray35"),
+    legend.text = element_text(size = 11, color = "gray25"),
     legend.key.size = unit(8,"mm"),
     plot.margin = margin(6,2,6,2, "mm"))
 
