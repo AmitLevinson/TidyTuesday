@@ -31,7 +31,7 @@ Below is a graph depicting my frequently used packages in #Tidytuesday, automati
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2021/week3_tate/tate_art.Rmd)
 
 <p align = "center">
-<img src = "2021/week3_tate/Tate_artists.gif" width = "700">
+<img src = "2021/week3_tate/Tate-artists.gif" width = "700">
 </p>
 
 
