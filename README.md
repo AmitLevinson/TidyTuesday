@@ -19,7 +19,7 @@ Below is a graph depicting my frequently used packages in #Tidytuesday, automati
 
 
 ### **19.01.2020**  
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/tree/master/2021/week4_rkenya/rkenya.R)
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/tree/master/2021/week4_rkenya/rkenya.R){:target="_blank"}
 
 <p align = "center">
 <img src = "2021/week4_rkenya/rkenya.png" width = "700">
@@ -28,7 +28,7 @@ Below is a graph depicting my frequently used packages in #Tidytuesday, automati
 
 
 ### **12.01.2020**  
-[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2021/week3_tate/tate_art.Rmd)
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2021/week3_tate/tate_art.Rmd) | [Explore it](https://amitlevinson.github.io/TidyTuesday/2021/week3_tate/tate_art.html){:target="_blank"}
 
 <p align = "center">
 <img src = "2021/week3_tate/Tate-artists.gif" width = "700">
