@@ -69,4 +69,3 @@ ggplot(kenya_plot)+
     plot.margin = margin(6,2,6,2, "mm"))
 
 ggsave(here("2021", "week4_rkenya", "rkenya.png"), width = 11, height = 11)
-  
