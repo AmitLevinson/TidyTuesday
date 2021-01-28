@@ -13,12 +13,39 @@ Below is a graph depicting my frequently used packages in #Tidytuesday, automati
 <img src = "extra/packages-used.png" width = "700">
 </p>
 
-## My various submissions
+## Various submissions
 
 <br>
 
-### **19.12.2020**  
+
+### **12.01.2020**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/tree/master/2021/week4_rkenya/rkenya.R)
+
+<p align = "center">
+<img src = "2021/week4_rkenya/rkenya.png" width = "700">
+</p>
+
+
+
+### **12.01.2020**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2021/week3_tate/tate_art.Rmd)
+
+<p align = "center">
+<img src = "2021/week3_tate/Tate_artists.gif" width = "700">
+</p>
+
+
+
+### **29.12.2020**  
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week_41/week41_ncaa.R)
+
+<p align = "center">
+<img src = "2020/week53_tweetdata/data_2020.png" width = "700">
+</p>
+
+
+### **19.12.2020**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2020/week_41/tweet_2020.R)
 
 <p align = "center">
 <img src = "2020/week51_ninja/week51_ninja.png" width = "700">
