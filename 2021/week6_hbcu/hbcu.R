@@ -18,7 +18,7 @@ hbcu_tidy <- hbcu %>%
 
 hbcu_tidy %>% 
   ggplot()+
-  geom_pictogram(aes(values = enrolled, label = "gender", color = gender), n_rows = 10, flip = TRUE, size = 3, family = "Font Awesome 5 Free Solid")+
+  geom_pictogram(aes(values = enrolled, label = "gender", color = gender), n_rows = 10, flip = TRUE, size = 4, family = "Font Awesome 5 Free Solid")+
   facet_wrap(~ Year, nrow = 1, strip.position = "bottom")+
   scale_label_pictogram(name = NULL, values = c("graduation-cap"))+
   scale_y_continuous(breaks = c(10,20,30), labels = paste0(seq(100,300,100), "k"))+
@@ -30,9 +30,9 @@ hbcu_tidy %>%
        caption = "\nData: Data.World | @Amit_Levinson")+
   theme_minimal(base_family = "Mukta Medium")+
   theme(legend.position = "none",
-        plot.subtitle = element_markdown(size = 14, family = "Mukta Light"),
-        plot.title = element_markdown(size = 20),
-        plot.caption = element_text(size = 8, color = "gray45", face = "italic"),
+        plot.subtitle = element_markdown(size = 16, family = "Mukta Light"),
+        plot.title = element_markdown(size = 22),
+        plot.caption = element_text(size = 10, color = "gray45", face = "italic"),
         axis.text.x = element_blank(),
         axis.text.y = element_text(size = 12, color = "gray60"),
         strip.text = element_text(size = 13, color = "gray35"),
@@ -44,4 +44,4 @@ hbcu_tidy %>%
   ggsave(here("extra","images", "progress", "2021-week6", paste0(format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), type = 'cairo', height = 4, width = 6)  
 
   
-ggsave(here("2021", "week6_hbcu", "hbcu.png"), width = 14, height = 10)  
+ggsave(here("2021", "week6_hbcu", "hbcu.png"), width = 16, height = 12)  
