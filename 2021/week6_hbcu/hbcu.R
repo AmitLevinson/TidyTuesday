@@ -40,7 +40,7 @@ hbcu_tidy %>%
         panel.grid.major.x = element_blank(),
         panel.grid.minor.y = element_blank(),
         panel.grid.major.y = element_line(color = "gray85", linetype = "dashed"),
-        plot.margin = margin (4,10,4,10, "mm"))+
+        plot.margin = margin (4,4,4,4, "mm"))
   ggsave(here("extra","images", "progress", "2021-week6", paste0(format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), type = 'cairo', height = 4, width = 6)  
 
   
