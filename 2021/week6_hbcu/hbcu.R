@@ -30,7 +30,7 @@ hbcu_tidy %>%
        caption = "\nData: Data.World | @Amit_Levinson")+
   theme_minimal(base_family = "Mukta Medium")+
   theme(legend.position = "none",
-        plot.subtitle = element_markdown(size = 16, family = "Mukta Light"),
+        plot.subtitle = element_markdown(size = 18, family = "Mukta Light"),
         plot.title = element_markdown(size = 22),
         plot.caption = element_text(size = 10, color = "gray45", face = "italic"),
         axis.text.x = element_blank(),
