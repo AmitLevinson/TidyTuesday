@@ -17,8 +17,16 @@ Below is a graph depicting my frequently used packages in #Tidytuesday, automati
 
 <br>
 
+### **03.02.2021**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2021/week6_hbcu/hbcu.R)
 
-### **19.01.2020**  
+<p align = "center">
+<img src = "2021/week6_hbcu/hbcu.png" width = "700">
+</p>
+
+
+
+### **19.01.2021**  
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/tree/master/2021/week4_rkenya/rkenya.R)
 
 <p align = "center">
@@ -27,7 +35,7 @@ Below is a graph depicting my frequently used packages in #Tidytuesday, automati
 
 
 
-### **12.01.2020**  
+### **12.01.2021**  
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2021/week3_tate/tate_art.Rmd) | [Explore it](https://amitlevinson.github.io/TidyTuesday/2021/week3_tate/tate_art.html)
 
 <p align = "center">
