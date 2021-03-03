@@ -1,4 +1,3 @@
-library(tidyr)
 library(dplyr)
 library(ggplot2)
 library(here)
@@ -24,8 +23,8 @@ skimr::skim(youtube)
   # Create breaks including a dot dot dot
   scale_y_continuous(limits = c(0,4e7), breaks = seq(0, 4e7, 1e7), labels = c(seq(0,30,10), ".\n."))+
   theme_minimal()+
-  labs(title = "Brands' Super Bowl Commercials Youtube View Count",
-       subtitle = "Each point represents an aired commercial Youtube view count. Majority of advertising content is characterized\nby 0-10 million views, with a few commercials gaining more than 20 million views. Data is based on \"233 ads\nfrom the 10 brands that aired the most spots in all 21 Super Bowls (FiveThirtyEight)\". Several commercials were\nmissing view counts.",
+  labs(title = "Brands' Super Bowl Commercials View Count",
+       subtitle = "Each point represents an aired commercial YouTube view count. Majority of advertising content is characterized\nby 0-10 million views, with a few commercials gaining more than 20 million views. Data is based on \"233 ads\nfrom the 10 brands that aired the most spots in all 21 Super Bowls (FiveThirtyEight)\". Several commercials were\nmissing view counts.",
        x = "\nBrand name",
        y = "\n\nViews  (millions)",
        caption = "Data: FiveThirtyEight\nVisualization: @Amit_Levinson")+
@@ -46,7 +45,7 @@ skimr::skim(youtube)
 doritos_label <- data.frame(
     x = 4.48,
     y = 163500000,
-    label = "<b>Doritos'</b> 2012 *Sling Baby* has more<br>than **170 million** Youtube views")
+    label = "<b>Doritos'</b> 2012 *Sling Baby* has more<br>than **170 million** YouTube views")
   
   
   p2 <- youtube %>% 
@@ -64,8 +63,9 @@ doritos_label <- data.frame(
     scale_y_continuous(limits = c(3e7,1.8e8))+
     # Remove everything
     theme_void()+
-    annotate(geom = "curve", x = 4.5, xend = 4.03, y = 170000000, yend = 176350200, curvature = .2, color = "grey35", size = 0.75, arrow = arrow(length = unit(1.5,"mm")))+
-    geom_richtext(data = doritos_label, aes(x = x, y = y,label =label), fill = NA, label.color = NA, hjust = 0,family = "IBM Plex Sans Light", size = 4)
+    theme(plot.margin = margin(4,2,2,2,"mm"))+
+    annotate(geom = "curve", x = 4.5, xend = 4.03, y = 170000000, yend = 176350200, curvature = .2, color = "grey45", size = 0.65, arrow = arrow(length = unit(1.25,"mm")))+
+    geom_richtext(data = doritos_label, aes(x = x, y = y,label =label), fill = NA, label.color = NA, hjust = 0,family = "IBM Plex Sans Light", size = 3.5)
   
 
 # Combining plots ---------------------------------------------------------
