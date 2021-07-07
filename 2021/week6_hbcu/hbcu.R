@@ -24,7 +24,7 @@ hbcu_tidy %>%
   scale_y_continuous(breaks = c(10,20,30), labels = paste0(seq(100,300,100), "k"))+
   scale_color_manual(values = c("#72BC79", "gray70"))+
   coord_equal()+
-  labs(title = "Student enrollment in Historically Black Colleges and Universities (HBCU)",
+  labs(title = "Student Enrollment in Historically Black Colleges and Universities (HBCU)",
        subtitle = "HBCU institution enrollment since the 1980s. Much of this increase results from greater <span style='color:#72BC79'><b>female</b></span> participation than <span style='color:gray55'>**men**</span>.<br><br>
       <span style='font-family: \"Font Awesome 5 Free Solid\";color:gray35;'>&#xf19d;</span> = 1,000 students",
        caption = "\nData: Data.World | @Amit_Levinson")+
@@ -41,7 +41,7 @@ hbcu_tidy %>%
         panel.grid.minor.y = element_blank(),
         panel.grid.major.y = element_line(color = "gray85", linetype = "dashed"),
         plot.margin = margin (4,4,4,4, "mm"))
-  ggsave(here("extra","images", "progress", "2021-week6", paste0(format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), type = 'cairo', height = 4, width = 6)  
+  #ggsave(here("extra","images", "progress", "2021-week6", paste0(format(Sys.time(), "%Y%m%d_%H%M%S"), ".png")), type = 'cairo', height = 4, width = 6)  
 
   
 ggsave(here("2021", "week6_hbcu", "hbcu.png"), width = 16, height = 12)  
