@@ -61,7 +61,7 @@ ggplot(data = sayings_clean, aes(x= date_year, y = total_said, fill = saying,  g
     axis.text.x = element_text(color = "gray15", size = 10),
     plot.subtitle = element_markdown(lineheight = 1.1),
     plot.caption = element_text(color = 'gray35', vjust = -2),
-    plot.margin = margin(4,4,4,6)
+    plot.margin = margin(4,4,4,8)
   )+
   coord_fixed(clip = 'off')
 
