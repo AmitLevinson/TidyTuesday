@@ -17,6 +17,24 @@ Below is a graph depicting my frequently used packages in #Tidytuesday, automati
 
 <br>
 
+### **18.07.2021**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2021/week29_scoobydoo/sd.R)
+
+<p align = "center">
+<img src = "2021/week29_scoobydoo/sd.png" width = "700">
+</p>
+
+
+
+
+### **03.03.2021**  
+[Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2021/week10_superbowl/superbowl.R)
+
+<p align = "center">
+<img src = "2021/week10_superbowl/superbowl.png" width = "700">
+</p>
+
+
 ### **03.02.2021**  
 [Link to code](https://github.com/AmitLevinson/TidyTuesday/blob/master/2021/week6_hbcu/hbcu.R)
 
