@@ -51,7 +51,7 @@ ggplot(data = sayings_clean, aes(x= date_year, y = total_said, fill = saying,  g
   guides(color = "none", fill = "none")+
   labs(
     title = "Scooby Doo Quotes",
-    subtitle = "Average number of Scooby Doo quotes across episodes (or movies) aired that year. For example, <span style='color:#C19C72'><b>Zoinks was noted an<br>average of 3 times across 36 episodes in 1981, whereas 14 times in the one episode aired in 1998.</b></span>White lines represent<br>missing values for that year.",
+    subtitle = "Average number of Scooby Doo quotes across episodes (or movies) aired that year. For example, <span style='color:#C19C72'><b>'Zoinks' was noted an<br>average of 3 times across 36 episodes in 1981, whereas 14 times in the one episode aired in 1998.</b></span>White lines represent<br>missing values for that year.",
     caption = "Data: | Visualization: @Amit_Levinson"
   )+
   theme_void()+
@@ -61,9 +61,12 @@ ggplot(data = sayings_clean, aes(x= date_year, y = total_said, fill = saying,  g
     axis.text.x = element_text(color = "gray15", size = 10),
     plot.subtitle = element_markdown(lineheight = 1.1),
     plot.caption = element_text(color = 'gray35', vjust = -2),
-    plot.margin = margin(4,4,4,8)
+    plot.margin = margin(4,4,4,8),
+    plot.background = element_rect(fill = "white", color = NA)
   )+
   coord_fixed(clip = 'off')
 
 
 ggsave("sd.png", width = 11, height = 7)
+
+
